@@ -622,14 +622,18 @@ footer .logo{color:#123a83}
     </div></div>
     <div class="card">
       <h2 class="ch">Send us a message</h2>
-      <form class="cform" onsubmit="event.preventDefault();sendContact(this)">
+      <form class="cform" action="https://formsubmit.co/info@votrite.com" method="POST" onsubmit="prepContact(this)">
+        <input type="hidden" name="_subject" value="Votrite Mobil Shop inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://shopvotritemobil.com/#thanks">
         <input name="_honey" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-        <label>Your name<input name="name" required placeholder="Full name"></label>
-        <label>Business name<input name="business" placeholder="Business name"></label>
+        <label>Your name<input name="Name" required placeholder="Full name"></label>
+        <label>Business name<input name="Business" placeholder="Business name"></label>
         <div class="two2"><label>Email<input name="email" type="email" required placeholder="you@business.com"></label>
-        <label>Phone<input name="phone" type="tel" placeholder="Phone number"></label></div>
-        <label>I'm interested in<select name="interest"><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
-        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your business"></textarea></label>
+        <label>Phone<input name="Phone" type="tel" placeholder="Phone number"></label></div>
+        <label>I'm interested in<select name="Interested in"><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
+        <label>Message<textarea name="Message" rows="4" placeholder="Tell us about your business"></textarea></label>
         <button class="btn btn-gold">Send Message @@arrow@@</button>
       </form>
     </div>
@@ -756,6 +760,7 @@ function render(){
    $("#all").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No businesses match yet.</div>'; }
  else if(h==="deals"){ $("#v-deals").classList.add("on"); $("#deals-all").innerHTML=live().filter(b=>b.deal).map(dealCard).join(""); }
  else if(["advertise","about","help","contact"].includes(h)){ $("#v-"+h).classList.add("on"); }
+ else if(h==="thanks"){ $("#v-contact").classList.add("on"); toast("Thank you! Your message was sent to Votrite Mobil. We will get back to you soon.",7000); }
  else if(h==="admin"){ $("#v-admin").classList.add("on"); admin(); }
  else if(h.startsWith("biz-")){ const b=BIZ.find(x=>x.id==h.slice(4)); if(!b){location.hash="home";return;}
    b.views++;
@@ -783,31 +788,8 @@ function render(){
  else location.hash="home";
 }
 function shopClick(id){const b=BIZ.find(x=>x.id==id); b.clicks++; toast("Opens "+b.name+"'s own website (click counted)");}
-// messages go straight to Votrite Mobil's inbox (FormSubmit); if that service cannot be reached,
-// the visitor's own email program opens with the same message so nothing is lost
-const INBOX="info@votrite.com";
-function mailFallback(subject, body){
- const url="mailto:"+INBOX+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
- window._lastMail=url; window.location.href=url;
- toast("Your email program is opening with your message to Votrite Mobil. Just press Send.");
-}
-async function sendContact(f){
- const v=n=>(f.elements[n].value||"").trim();
- if(v("_honey")) return;
- const subject="Votrite Mobil Shop inquiry"+(v("business")?" - "+v("business"):"");
- const fields={"Name":v("name"),"Business":v("business"),"Email":v("email"),"Phone":v("phone"),"Interested in":v("interest"),"Message":v("message")};
- const body=Object.entries(fields).map(([k,x])=>k+": "+x).join("\n");
- const btn=f.querySelector("button"); btn.disabled=true; const label=btn.innerHTML; btn.textContent="Sending…";
- try{
-  const r=await fetch("https://formsubmit.co/ajax/"+INBOX,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-    body:JSON.stringify({...fields,_subject:subject,_replyto:v("email"),_template:"table",_captcha:"false"})});
-  const j=await r.json().catch(()=>({}));
-  window._lastSend={status:r.status,body:j};
-  if(r.ok && (j.success===true||j.success==="true")){ f.reset(); toast("Thank you! Your message was sent to Votrite Mobil. We will get back to you soon."); }
-  else mailFallback(subject, body);
- }catch(e){ window._lastSend={error:String(e)}; mailFallback(subject, body); }
- finally{ btn.disabled=false; btn.innerHTML=label; }
-}
+// the form posts to FormSubmit, which emails it to Votrite Mobil and comes back to #thanks
+function prepContact(f){ const b=f.elements["Business"].value.trim(); f.elements["_subject"].value="Votrite Mobil Shop inquiry"+(b?" - "+b:""); }
 function go(f){filt=f; if(location.hash==="#browse") render(); else location.hash="browse";}
 function doSearch(){go({q:$("#q").value.trim()||undefined, city:$("#city").value||undefined});}
 function admin(){
@@ -826,7 +808,7 @@ function admin(){
 }
 function setSt(id,s){BIZ.find(b=>b.id==id).status=s; admin(); toast(s==="live"?"Approved: now visible on the site":"Paused: hidden from the site");}
 function feat(id){const b=BIZ.find(x=>x.id==id); b.featured=!b.featured; admin(); toast(b.featured?"Now featured on the home page":"Removed from featured");}
-function toast(t){const e=$("#toast"); e.textContent=t; e.classList.add("show"); clearTimeout(e._t); e._t=setTimeout(()=>e.classList.remove("show"),2400);}
+function toast(t,ms){const e=$("#toast"); e.textContent=t; e.classList.add("show"); clearTimeout(e._t); e._t=setTimeout(()=>e.classList.remove("show"),ms||2400);}
 CITIES.forEach(([c])=>$("#city").insertAdjacentHTML("beforeend",`<option>${c}</option>`));
 window.addEventListener("hashchange",render); render();
 </script>
