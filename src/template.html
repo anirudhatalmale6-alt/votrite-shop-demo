@@ -623,6 +623,7 @@ footer .logo{color:#123a83}
     <div class="card">
       <h2 class="ch">Send us a message</h2>
       <form class="cform" onsubmit="event.preventDefault();sendContact(this)">
+        <input name="_honey" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <label>Your name<input name="name" required placeholder="Full name"></label>
         <label>Business name<input name="business" placeholder="Business name"></label>
         <div class="two2"><label>Email<input name="email" type="email" required placeholder="you@business.com"></label>
@@ -782,13 +783,30 @@ function render(){
  else location.hash="home";
 }
 function shopClick(id){const b=BIZ.find(x=>x.id==id); b.clicks++; toast("Opens "+b.name+"'s own website (click counted)");}
-// the message opens in the visitor's own email program, addressed to Votrite Mobil
-function sendContact(f){
- const v=n=>(f.elements[n].value||"").trim();
- const body=["Name: "+v("name"),"Business: "+v("business"),"Email: "+v("email"),"Phone: "+v("phone"),"Interested in: "+v("interest"),"","Message:",v("message")].join("\n");
- const url="mailto:info@votrite.com?subject="+encodeURIComponent("Votrite Mobil Shop inquiry"+(v("business")?" - "+v("business"):""))+"&body="+encodeURIComponent(body);
+// messages go straight to Votrite Mobil's inbox (FormSubmit); if that service cannot be reached,
+// the visitor's own email program opens with the same message so nothing is lost
+const INBOX="info@votrite.com";
+function mailFallback(subject, body){
+ const url="mailto:"+INBOX+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
  window._lastMail=url; window.location.href=url;
  toast("Your email program is opening with your message to Votrite Mobil. Just press Send.");
+}
+async function sendContact(f){
+ const v=n=>(f.elements[n].value||"").trim();
+ if(v("_honey")) return;
+ const subject="Votrite Mobil Shop inquiry"+(v("business")?" - "+v("business"):"");
+ const fields={"Name":v("name"),"Business":v("business"),"Email":v("email"),"Phone":v("phone"),"Interested in":v("interest"),"Message":v("message")};
+ const body=Object.entries(fields).map(([k,x])=>k+": "+x).join("\n");
+ const btn=f.querySelector("button"); btn.disabled=true; const label=btn.innerHTML; btn.textContent="Sending…";
+ try{
+  const r=await fetch("https://formsubmit.co/ajax/"+INBOX,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify({...fields,_subject:subject,_replyto:v("email"),_template:"table",_captcha:"false"})});
+  const j=await r.json().catch(()=>({}));
+  window._lastSend={status:r.status,body:j};
+  if(r.ok && (j.success===true||j.success==="true")){ f.reset(); toast("Thank you! Your message was sent to Votrite Mobil. We will get back to you soon."); }
+  else mailFallback(subject, body);
+ }catch(e){ window._lastSend={error:String(e)}; mailFallback(subject, body); }
+ finally{ btn.disabled=false; btn.innerHTML=label; }
 }
 function go(f){filt=f; if(location.hash==="#browse") render(); else location.hash="browse";}
 function doSearch(){go({q:$("#q").value.trim()||undefined, city:$("#city").value||undefined});}
