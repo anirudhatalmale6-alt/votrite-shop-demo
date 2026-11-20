@@ -116,7 +116,7 @@ nav.top a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:2px;
 .strip span{color:#b9c8e6;font-size:13px}
 
 .band{background:#fff;border-bottom:1px solid var(--line)}
-.band .wrap{display:grid;grid-template-columns:2.2fr repeat(4,1fr);gap:18px;align-items:center;padding-top:24px;padding-bottom:24px}
+.band .wrap{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding-top:24px;padding-bottom:24px}
 .band h2{font-family:Montserrat;font-weight:800;font-size:22px;color:#0a2a6b}
 .band p{color:var(--muted);font-size:13.5px;margin-top:4px;max-width:520px}
 .bs{text-align:center;border-left:1px solid var(--line);padding:0 6px}
@@ -142,6 +142,10 @@ section{padding:42px 0}
 .rt svg{color:#f5b400;fill:#f5b400;stroke:#f5b400}
 .pinfo{margin-top:12px}
 .price{color:var(--blue);font-weight:800;font-size:19px;font-family:Montserrat}
+.pcats-wide{grid-column:span 2}
+.pcats-wide .pcats .ic{font-size:40px}
+.pcats-wide .pcats a{font-size:14px}
+.pcats-wide .pcats .ic{aspect-ratio:auto;height:92px}
 .pcats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .pcats a{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;font-weight:600;text-align:center;color:#33415c}
 .pcats .ic{width:100%;aspect-ratio:1;border-radius:12px;background:#f1f5fc;display:flex;align-items:center;justify-content:center;font-size:24px;transition:.15s}
@@ -272,6 +276,9 @@ section{padding:42px 0}
 
 /* contact */
 .contact{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:start}
+.ctitle{background:linear-gradient(100deg,#061331,#123a83);color:#fff;border-radius:20px;padding:30px 28px;margin-bottom:22px}
+.ctitle h1{font-family:Montserrat;font-weight:800;font-size:32px}
+.ctitle p{color:#cfdcf5;font-size:16px;margin-top:8px}
 .ch{font-family:Montserrat;font-weight:800;font-size:22px;margin-bottom:14px}
 .prices td{vertical-align:top;font-size:14px}
 .prices td:nth-child(2){color:#3d4a63}
@@ -302,16 +309,22 @@ th{background:#f7f9fd;color:var(--muted);font-weight:600;font-size:12px;text-tra
 .tthumb{width:40px;height:40px;border-radius:10px;background-size:cover;background-position:center;flex:none}
 .note{color:var(--muted);font-size:13px;margin-top:12px}
 
-footer{background:var(--navy);color:#a8badc;font-size:13px}
+footer{background:#eaf0f9;color:#1f4f8a;font-size:13px;border-top:1px solid #d5deec}
+footer .logo{color:#123a83}
+.fimp{border-top:1px solid #d5deec;padding:22px 0}
+.fimp .wrap{display:flex;gap:24px;align-items:flex-start}
+.fimp h3{display:flex;gap:10px;align-items:center;font-family:Montserrat;font-size:19px;white-space:nowrap;color:var(--ink)}
+.fimp h3 svg{font-size:26px}
+.fimp p{font-size:13px;color:#1f4f8a;margin-bottom:6px}
 .f1{display:grid;grid-template-columns:1.1fr 1.4fr 1.6fr;gap:30px;padding:30px 20px 24px;align-items:start}
-.f1 .tg{font-size:11px;letter-spacing:.2em;color:var(--sky);margin-top:6px}
+.f1 .tg{font-size:12.5px;letter-spacing:.16em;color:#1f4f8a;margin-top:8px;font-weight:600}
 .flinks{display:flex;flex-wrap:wrap;gap:4px 0;justify-content:center}
-.flinks a{color:#dbe5f7;padding:2px 12px;border-right:1px solid rgba(255,255,255,.2)}
+.flinks a{color:#123a83;font-weight:600;padding:2px 12px;border-right:1px solid #b9c8e0}
 .flinks a:last-child{border:0}
-.soc{display:flex;gap:16px;justify-content:center;margin-top:14px;color:#fff;font-size:20px}
-.fdisc{border-left:1px solid rgba(255,255,255,.15);padding-left:24px;font-size:12px;line-height:1.55}
-.fdisc b{color:#fff}
-.f2{border-top:1px solid rgba(255,255,255,.1);background:#050f28}
+.soc{display:flex;gap:16px;justify-content:center;margin-top:14px;color:#123a83;font-size:20px}
+.fdisc{border-left:1px solid #b9c8e0;padding-left:24px;font-size:12px;line-height:1.55}
+.fdisc b{color:#123a83}
+.f2{background:#4f86d6;color:#fff}
 .f2 .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
 .f2 .acw{display:flex;gap:7px;align-items:center;letter-spacing:.16em;font-size:11px}
 
@@ -355,7 +368,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .plans{grid-template-columns:1fr} .admin-top{grid-template-columns:1fr 1fr}
   .ahero .wrap{grid-template-columns:1fr} .aimg{display:none}
   .two{grid-template-columns:1fr} .vals{grid-template-columns:1fr 1fr}
-  .discblk .wrap{flex-direction:column;gap:8px}
+  .discblk .wrap,.fimp .wrap{flex-direction:column;gap:8px}
   .contact{grid-template-columns:1fr}
 }
 @media (max-width:380px){
@@ -387,7 +400,8 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .hdr-r .signup{padding:8px 11px;font-size:13px}
   .hdr-r{gap:0} .hdr-r button{padding:8px 7px} .hdr-r .cityb{display:none}
   .strip svg{font-size:32px}
-  .panels,.grid,.deals{grid-template-columns:1fr}
+  .panels,.grid,.deals{grid-template-columns:minmax(0,1fr)} .pcats-wide{grid-column:auto}
+  .pcats-wide .pcats .ic{height:60px;font-size:28px} .pcats-wide .pcats a{font-size:11px}
   .cats{gap:8px} .cat{padding:12px 4px;font-size:11px}
   .cities{grid-template-columns:1fr 1fr}
   .prods{grid-template-columns:1fr 1fr}
@@ -397,17 +411,17 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .f1{grid-template-columns:1fr} .flinks{justify-content:flex-start} .flinks a:first-child{padding-left:0} .soc{justify-content:flex-start}
   table{font-size:12px} .admtbl th:nth-child(3),.admtbl td:nth-child(3),.admtbl th:nth-child(4),.admtbl td:nth-child(4){display:none}
   .page-h h1{font-size:28px}
+  .ctitle{padding:22px 18px} .ctitle h1{font-size:26px}
   .two2{grid-template-columns:1fr}
   .prices th:nth-child(2),.prices td:nth-child(2){display:none}
 }
 </style>
 </head>
 <body>
-<div class="demo-bar">SHOPVOTRITEMOBIL.COM • DEMONSTRATION WEBSITE ONLY • SAMPLE BUSINESSES • SAMPLE PRODUCTS • SAMPLE FIGURES FOR ILLUSTRATION PURPOSES ONLY</div>
 <header>
   <div class="wrap hdr">
     <a class="logo" href="#home" aria-label="Votrite Mobil Shop home">
-      <svg viewBox="0 0 40 36"><defs><linearGradient id="lgV" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7be04a"/><stop offset=".55" stop-color="#22c3ee"/><stop offset="1" stop-color="#1d6fe8"/></linearGradient></defs><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span><small>SHOP</small>
+      <svg viewBox="0 0 40 36"><defs><linearGradient id="lgV" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d0101e"/><stop offset="1" stop-color="#d0101e"/></linearGradient></defs><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span><small>SHOP</small>
     </a>
     <nav class="top">
       <a href="#home" data-nav="home">Home</a>
@@ -452,7 +466,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <div class="stage" id="stage">
         <div class="script">Businesses<br>People<br>Possibilities<br>Everywhere</div>
         <div class="phone"><div class="scr"><div class="notch"></div>
-          <div class="ps-h"><span><span style="color:#2ad46b">V</span>otrite <span class="m">Mobil</span></span>@@menu@@</div>
+          <div class="ps-h"><span><span style="color:#d0101e">V</span>otrite <span class="m">Mobil</span></span>@@menu@@</div>
           <div class="ps-s">Search products… @@search@@</div>
           <div class="ps-t">Shop Local.<br>Shop Global.<br><b>Shop Mobile.</b></div>
           <div class="ps-ic"><div>@@bag@@Products</div><div>@@tag@@Deals</div><div>@@store@@Stores</div><div>@@user@@Account</div></div>
@@ -463,6 +477,8 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       </div>
     </div>
   </div>
+  <div class="wrap" style="padding-top:22px;padding-bottom:22px"><div class="cta">@@bars@@<div class="tx"><h2>Start growing your business today.</h2><p>Your first ad is free. Join Votrite Mobil Shop and be part of a more connected tomorrow.</p></div>
+    <a class="btn btn-gold" href="#advertise">Advertise Now @@arrow@@</a><div class="scr2">More Businesses<br>A Brighter Tomorrow</div></div></div>
   <div class="strip"><div class="wrap">
     <div class="it">@@users@@<div><b>MORE CUSTOMERS</b><span>Reach local and international audiences.</span></div></div>
     <div class="it">@@bars@@<div><b>BIGGER OPPORTUNITIES</b><span>Showcase products, services and special offers.</span></div></div>
@@ -471,14 +487,10 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   </div></div>
   <div class="band"><div class="wrap">
     <div class="bt"><h2>Shop Local. Shop Global. Shop Mobile.</h2><p>Votrite Mobil provides a platform where businesses can create listings, promote offers, and connect with customers through mobile commerce solutions.</p></div>
-    <div class="bs">@@globe@@<b>100+</b><span>Cities</span></div>
-    <div class="bs">@@users@@<b>10,000+</b><span>Sample Businesses</span></div>
-    <div class="bs">@@bag@@<b>50,000+</b><span>Sample Products</span></div>
-    <div class="bs">@@star@@<b>1M+</b><span>Opportunities</span></div>
   </div></div>
   <div class="wrap">
     <section>
-      <div class="sec-h"><h2>Featured on Votrite Mobil Shop</h2><a class="va" href="#browse" onclick="filt={}">View All @@arrow@@</a></div>
+      <div class="sec-h"><h2>Featured on Votrite Mobil Shop <span style="font-weight:600;color:var(--muted);font-size:.8em">(examples)</span></h2><a class="va" href="#browse" onclick="filt={}">View All @@arrow@@</a></div>
       <div class="panels" id="panels"></div>
     </section>
     <section style="padding-top:0">
@@ -492,10 +504,6 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
     <section style="padding-top:0">
       <div class="sec-h"><h2>Latest deals</h2><a class="va" href="#deals">All Deals @@arrow@@</a></div>
       <div class="deals" id="deals-home"></div>
-    </section>
-    <section style="padding-top:0">
-      <div class="cta">@@bars@@<div class="tx"><h2>Start growing your business today.</h2><p>Your first ad is free. Join Votrite Mobil Shop and be part of a more connected tomorrow.</p></div>
-        <a class="btn btn-gold" href="#advertise">Advertise Now @@arrow@@</a><div class="scr2">More Businesses<br>A Brighter Tomorrow</div></div>
     </section>
   </div>
 </div>
@@ -545,15 +553,15 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
           <ul><li>@@check@@Business profile page</li><li>@@check@@Business logo and photos</li><li>@@check@@Product or service listings</li><li>@@check@@Location and contact information</li><li>@@check@@Shown in category &amp; city search</li><li>@@check@@Basic performance reporting</li></ul>
           <button class="btn btn-gold" onclick="toast('Demo: sign-up form comes in Step 2')">Post Free Advertisement @@arrow@@</button></div>
         <div class="plan"><h3>Additional Advertisements</h3><div class="sm">Flexible options to grow your visibility.</div>
-          <div class="pr">$ — <small>/ ad while it runs</small></div>
+          <div class="pr">$0.50 <small>/ per day</small></div>
           <ul><li>@@check@@Add more products or services</li><li>@@check@@Additional locations</li><li>@@check@@Run as long as you keep it on</li><li>@@check@@Pause or stop at any time</li><li>@@check@@Independent view &amp; click metrics</li><li>@@check@@Customise each advertisement</li></ul>
           <button class="btn btn-ghost" onclick="toast('Demo: online payment comes in Step 2')">Add Advertisement</button></div>
         <div class="plan"><h3>Featured Placement</h3><div class="sm">Premium visibility for greater results.</div>
-          <div class="pr">$ — <small>extra</small></div>
+          <div class="pr">$1.00 <small>extra per day</small></div>
           <ul><li>@@check@@Top spot on the homepage</li><li>@@check@@Gold “Featured” badge</li><li>@@check@@Priority in search results</li><li>@@check@@Featured in “Latest Deals”</li><li>@@check@@More views and customer engagement</li><li>@@check@@Stand out from the competition</li></ul>
           <button class="btn btn-blue" onclick="toast('Demo: online payment comes in Step 2')">Upgrade Listing @@arrow@@</button></div>
       </div>
-      <p class="note">Prices are left blank on purpose: Votrite Mobil sets them before launch.</p>
+      <p class="note">Launch promotion: every business gets its first advertisement free.</p>
     </section>
     <section style="padding-top:0">
       <div class="why">
@@ -599,25 +607,24 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
     <details open><summary>How do I find a business?</summary><p>Use the search bar on the home page, pick a city, or tap a category. Every business has its own page with products, deals, location and a link to its shop.</p></details>
     <details><summary>Can I buy directly on Votrite Mobil Shop?</summary><p>Not yet. Votrite Mobil Shop shows businesses and their offers; you buy from the business itself through the “Visit their shop” button.</p></details>
     <details><summary>How do I advertise my business?</summary><p>Go to Advertise and post your first advertisement for free. Once it is reviewed and approved, it appears in search, in its category and in its city.</p></details>
-    <details><summary>What does an additional advertisement cost?</summary><p>Your first ad is free during the launch promotion. Each additional ad is charged while it runs, and you can pause or stop it at any time.</p></details>
-    <details><summary>What is a Featured Placement?</summary><p>Featured ads appear at the top of the home page with a gold “Featured” badge, get priority in search results and appear in Latest Deals.</p></details>
+    <details><summary>What does an additional advertisement cost?</summary><p>Your first ad is free during the launch promotion. Each additional ad is $0.50 per day while it runs, and you can pause or stop it at any time.</p></details>
+    <details><summary>What is a Featured Placement?</summary><p>Featured Placement is $1.00 per day extra. Featured ads appear at the top of the home page with a gold “Featured” badge, get priority in search results and appear in Latest Deals.</p></details>
     <details><summary>Is this connected to VotRite voting?</summary><p>No. Votrite Mobil Shop is completely separate from VotRite voting. There are never any ads on ballot pages or in the voting app.</p></details>
   </section></div>
 </div>
 
 <!-- CONTACT -->
 <div class="view" id="v-contact">
-  <div class="page-h"><div class="wrap"><h1>Contact &amp; Price List</h1><p>Questions about advertising on Votrite Mobil Shop? Send us a message and we will get back to you.</p></div></div>
   <div class="wrap"><section><div class="contact">
+    <div><div class="ctitle"><h1>Contact &amp; Price List</h1><p>Questions about advertising on Votrite Mobil Shop?<br>Send us a message and we will get back to you.</p></div>
     <div class="card">
       <h2 class="ch">Price list</h2>
       <div style="overflow-x:auto"><table class="prices"><thead><tr><th>Advertising option</th><th>What you get</th><th>Price</th></tr></thead><tbody>
         <tr><td><b>First Ad — Launch Promotion</b></td><td>Business page with logo, photos, products, location and shop link; shown in category &amp; city search</td><td class="pv free">FREE</td></tr>
-        <tr><td><b>Each Additional Ad</b></td><td>Another product, service, deal or location; runs while you keep it on; pause or stop any time</td><td class="pv">$ ___ <small>/ ad</small></td></tr>
-        <tr><td><b>Featured Placement</b></td><td>Top spot on the homepage, gold Featured badge, priority in search, Latest Deals</td><td class="pv">$ ___ <small>extra</small></td></tr>
+        <tr><td><b>Each Additional Ad</b></td><td>Another product, service, deal or location; runs while you keep it on; pause or stop any time</td><td class="pv">$0.50 <small>per day</small></td></tr>
+        <tr><td><b>Featured Placement</b></td><td>Top spot on the homepage, gold Featured badge, priority in search, Latest Deals</td><td class="pv">$1.00 <small>per day</small></td></tr>
       </tbody></table></div>
-      <p class="note">Prices to be confirmed by Votrite Mobil before launch.</p>
-    </div>
+    </div></div>
     <div class="card">
       <h2 class="ch">Send us a message</h2>
       <form class="cform" onsubmit="event.preventDefault();this.reset();toast('Demo: in the live site this message is sent to Votrite Mobil')">
@@ -625,7 +632,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
         <label>Business name<input placeholder="Business name"></label>
         <div class="two2"><label>Email<input type="email" required placeholder="you@business.com"></label>
         <label>Phone<input type="tel" placeholder="Phone number"></label></div>
-        <label>I'm interested in<select><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements</option><option>Featured Placement</option><option>Something else</option></select></label>
+        <label>I'm interested in<select><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
         <label>Message<textarea rows="4" placeholder="Tell us about your business"></textarea></label>
         <button class="btn btn-gold">Send Message @@arrow@@</button>
       </form>
@@ -653,11 +660,6 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   </section>
 </div></div>
 
-<div class="discblk" id="discblk"><div class="wrap"><h3>@@alert@@Important Disclaimer</h3><div>
-  <p>Votrite Mobil Shop is a promotional and demonstration platform. Any sample businesses, advertisements, products, services, pricing, locations, customer reviews, ratings, sales figures, graphics, and performance metrics displayed on this website are fictional or used solely for illustrative, educational, marketing, or demonstration purposes.</p>
-  <p>No representation is made that any depicted business results, revenues, customer activity, endorsements, or commercial outcomes are actual or guaranteed. Individual results may vary and depend on market conditions, business practices, and other factors. Users should independently verify any business information before making purchasing or investment decisions.</p>
-</div></div></div>
-
 <footer>
   <div class="wrap f1" style="padding-left:20px;padding-right:20px">
     <div><a class="logo" href="#home" style="font-size:23px"><svg viewBox="0 0 40 36"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span></a><div class="tg">MOBILE COMMERCE FOR A BETTER TOMORROW</div></div>
@@ -665,6 +667,10 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <div class="soc">@@facebook@@@@instagram@@@@xlogo@@@@youtube@@@@linkedin@@</div></div>
     <div class="fdisc"><b>Disclaimer:</b> Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div>
   </div>
+  <div class="fimp"><div class="wrap"><h3>@@alert@@Important Disclaimer</h3><div>
+    <p>No representation is made that any depicted business results, revenues, customer activity, endorsements, or commercial outcomes are actual or guaranteed. Individual results may vary and depend on market conditions, business practices, and other factors. Users should independently verify any business information before making purchasing or investment decisions.</p>
+    <p>Votrite Mobil Shop is a promotional and demonstration platform. Any sample businesses, advertisements, products, services, pricing, locations, customer reviews, ratings, sales figures, graphics, and performance metrics displayed on this website are fictional or used solely for illustrative, educational, marketing, or demonstration purposes.</p>
+  </div></div></div>
   <div class="f2"><div class="wrap"><span>© 2026 Votrite Mobil · shopvotritemobil.com · All Rights Reserved. Demonstration website only. Separate from VotRite voting.</span><span class="acw">@@globe@@A MORE CONNECTED WORLD</span></div></div>
 </footer>
 <div class="toast" id="toast"></div>
@@ -676,13 +682,13 @@ const CATS=[["electronics","phone","Electronics"],["fashion","shirt","Fashion"],
 const CITIES=[["New York","c_newyork"],["London","c_london"],["Tokyo","c_tokyo"],["Dubai","c_dubai"],["Sydney","c_sydney"],["Rio de Janeiro","c_rio"]];
 const FACES=["f1","f2","f3"];
 let BIZ=[
- {id:1,name:"The Daily Grind",type:"Café & Coffee Shop",cat:"food",city:"New York",img:"b_cafe",logo:"THE DAILY GRIND",rating:4.8,reviews:128,featured:true,deal:"Free pastry with any latte",status:"live",views:2410,clicks:356,phone:"(555) 010-2001",
+ {id:1,name:"The Cafe",type:"Café & Coffee Shop",cat:"food",city:"New York",img:"b_cafe",rating:4.8,reviews:128,featured:true,deal:"Free pastry with any latte",status:"live",views:2410,clicks:356,phone:"(555) 010-2001",
   about:"Specialty coffee roasted in-house, fresh pastries and a cozy place to work or meet.",products:[[null,"cup","Latte","$4.50"],[null,"cake","Croissant","$3.25"],[null,"bag","House beans 1 lb","$16"]]},
- {id:2,name:"TechHub Store",type:"Electronics",cat:"electronics",city:"Tokyo",img:"b_tech",rating:4.9,reviews:211,featured:true,deal:"Free case with any phone",status:"live",views:2960,clicks:441,phone:"(555) 010-2003",
+ {id:2,name:"TechStore",type:"Electronics",cat:"electronics",city:"Tokyo",img:"b_tech",rating:4.9,reviews:211,featured:true,deal:"",status:"live",views:2960,clicks:441,phone:"(555) 010-2003",
   about:"Phones, smartwatches and audio with expert setup help in store.",products:[["p_earbuds",null,"Wireless Earbuds","$49.99"],["p_watch",null,"Smartwatch","$199"],["p_headphones",null,"Headphones","$89"]]},
- {id:3,name:"City View Hotel",type:"Hotel & Resort",cat:"travel",city:"Dubai",img:"b_hotel",rating:4.7,reviews:204,featured:true,deal:"20% off your stay",status:"live",views:3120,clicks:508,phone:"(555) 010-2004",
+ {id:3,name:"View Hotel",type:"Hotel & Resort",cat:"travel",city:"Dubai",img:"b_hotel",rating:4.7,reviews:204,featured:true,deal:"",status:"live",views:3120,clicks:508,phone:"(555) 010-2004",
   about:"Rooftop pool, skyline views and suites minutes from the city center.",products:[[null,"bed","Deluxe room / night","$180"],[null,"pool","Pool day pass","$35"],[null,"cup","Breakfast buffet","$22"]]},
- {id:4,name:"Bella Borsa Handbags",type:"Fashion & Accessories",cat:"fashion",city:"London",img:"b_bag",rating:4.6,reviews:89,featured:true,deal:"",status:"live",views:1875,clicks:268,phone:"(555) 010-2002",
+ {id:4,name:"Handbags",type:"Fashion & Accessories",cat:"fashion",city:"London",img:"b_bag",rating:4.6,reviews:89,featured:true,deal:"",status:"live",views:1875,clicks:268,phone:"(555) 010-2002",
   about:"Handmade leather handbags and accessories, shipped worldwide.",products:[["p_bag",null,"Designer Bag","$129.99"],[null,"tag","Leather wallet","$45"],[null,"shirt","Silk scarf","$39"]]},
  {id:5,name:"Bella Napoli Pizzeria",type:"Restaurant",cat:"food",city:"New York",img:"b_pizza",rating:4.8,reviews:342,featured:false,deal:"2 pizzas for $20",status:"live",views:2140,clicks:312,phone:"(555) 010-2005",
   about:"Wood-fired Neapolitan pizza, fresh pasta and homemade desserts since 2009.",products:[[null,"pizza","Margherita","$14"],[null,"fork","Fresh pasta","$16"],[null,"cake","Tiramisu","$7"]]},
@@ -720,18 +726,15 @@ function dealCard(b){return `<div class="dealcard" style="${bg(b.img)}" onclick=
 function catsHTML(){return CATS.map(c=>`<a class="cat ${filt.cat===c[0]||(!filt.cat&&c[0]==='all')?'on':''}" href="#browse" onclick="event.preventDefault();go(${c[0]==='all'?'{}':`{cat:'${c[0]}'}`})">${ic(c[1])}${c[2]}</a>`).join("")}
 
 function panels(){
- const fb=live().find(b=>b.id===1), fp=live().find(b=>b.id===2), dl=live().find(b=>b.id===3);
+ const fb=live().find(b=>b.id===1), fp=live().find(b=>b.id===2);
  let h="";
  if(fb) h+=`<div class="panel"><div class="panel-h">Featured Businesses <a class="va" href="#browse" onclick="filt={}">View All</a></div>
    <div class="pimg" style="${bg(fb.img)}" onclick="location.hash='biz-1'"></div>
-   <div class="pbiz"><div class="lg">THE<br>DAILY<br>GRIND</div><div><b>${fb.name}</b><div class="meta">${fb.type}</div>${stars(fb)}<div class="meta">${ic("pin")} ${fb.city}, USA</div></div></div></div>`;
+   <div class="pbiz"><div class="lg">THE<br>CAFE</div><div><b>${fb.name}</b><div class="meta">${fb.type}</div>${stars(fb)}<div class="meta">${ic("pin")} ${fb.city}, USA</div></div></div></div>`;
  if(fp) h+=`<div class="panel"><div class="panel-h">Featured Products <a class="va" href="#browse" onclick="event.preventDefault();go({cat:'electronics'})">View All</a></div>
    <div class="pimg" style="${bg("p_earbuds")};background-size:contain;background-repeat:no-repeat;background-color:#eef0f4" onclick="location.hash='biz-2'"></div>
-   <div class="pinfo"><b>Wireless Earbuds</b><div class="meta">High-quality sound, anywhere.</div><div style="display:flex;justify-content:space-between;align-items:center">${stars({rating:4.6,reviews:89})}<span class="price">$49.99</span></div></div></div>`;
- if(dl) h+=`<div class="panel"><div class="panel-h">Latest Deals <a class="va" href="#deals">View All</a></div>
-   <div class="pimg" style="${bg(dl.img)}" onclick="location.hash='biz-3'"><span class="off">20% OFF</span></div>
-   <div class="pinfo"><b>${dl.name}</b><div class="meta">Enjoy 20% off your stay</div><div style="display:flex;gap:14px">${stars(dl)}<span class="meta">${ic("pin")} Dubai, UAE</span></div></div></div>`;
- h+=`<div class="panel"><div class="panel-h">Popular Categories <a class="va" href="#browse" onclick="event.preventDefault();go({})">View All</a></div>
+   <div class="pinfo"><b>Wireless Earbuds</b><div class="meta">High-quality sound, anywhere.</div><div style="display:flex;justify-content:space-between;align-items:center">${stars({rating:4.6,reviews:89})}</div></div></div>`;
+ h+=`<div class="panel pcats-wide"><div class="panel-h">Popular Categories <a class="va" href="#browse" onclick="event.preventDefault();go({})">View All</a></div>
    <div class="pcats">${CATS.map(c=>`<a href="#browse" onclick="event.preventDefault();go(${c[0]==='all'?'{}':`{cat:'${c[0]}'}`})"><span class="ic" style="color:${{electronics:'#1d6fe8',fashion:'#e84393',home:'#1d6fe8',beauty:'#16a34a',food:'#f59e0b',travel:'#1d6fe8',services:'#1d6fe8',all:'#6c5ce7'}[c[0]]}">${ic(c[1])}</span>${c[2]}</a>`).join("")}</div></div>`;
  $("#panels").innerHTML=h;
 }
@@ -747,7 +750,6 @@ function render(){
  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
  document.querySelectorAll("nav.top a").forEach(a=>a.classList.toggle("on",a.dataset.nav===h.split("-")[0]));
  document.querySelector("nav.top").classList.remove("open");
- $("#discblk").style.display=(h==="advertise"||h==="about"||h==="help"||h==="contact")?"":"none";
  window.scrollTo(0,0);
  if(h==="home"){ $("#v-home").classList.add("on"); panels(); stage();
    $("#featured").innerHTML=live().filter(b=>b.featured).map(card).join("");
