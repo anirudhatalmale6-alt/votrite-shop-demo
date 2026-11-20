@@ -622,14 +622,18 @@ footer .logo{color:#123a83}
     </div></div>
     <div class="card">
       <h2 class="ch">Send us a message</h2>
-      <form class="cform" onsubmit="event.preventDefault();sendContact(this)">
-        <input name="website" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-        <label>Your name<input name="name" required placeholder="Full name"></label>
-        <label>Business name<input name="business" placeholder="Business name"></label>
+      <form class="cform" action="https://formsubmit.co/info@votrite.com" method="POST" onsubmit="prepContact(this)">
+        <input type="hidden" name="_subject" value="Votrite Mobil Shop inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://shopvotritemobil.com/#thanks">
+        <input name="_honey" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <label>Your name<input name="Name" required placeholder="Full name"></label>
+        <label>Business name<input name="Business" placeholder="Business name"></label>
         <div class="two2"><label>Email<input name="email" type="email" required placeholder="you@business.com"></label>
-        <label>Phone<input name="phone" type="tel" placeholder="Phone number"></label></div>
-        <label>I'm interested in<select name="interest"><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
-        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your business"></textarea></label>
+        <label>Phone<input name="Phone" type="tel" placeholder="Phone number"></label></div>
+        <label>I'm interested in<select name="Interested in"><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
+        <label>Message<textarea name="Message" rows="4" placeholder="Tell us about your business"></textarea></label>
         <button class="btn btn-gold">Send Message <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p class="note" style="margin-top:0;text-align:center">Your message goes directly to the Votrite Mobil team.</p>
       </form>
@@ -757,6 +761,7 @@ function render(){
    $("#all").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No businesses match yet.</div>'; }
  else if(h==="deals"){ $("#v-deals").classList.add("on"); $("#deals-all").innerHTML=live().filter(b=>b.deal).map(dealCard).join(""); }
  else if(["advertise","about","help","contact"].includes(h)){ $("#v-"+h).classList.add("on"); }
+ else if(h==="thanks"){ $("#v-contact").classList.add("on"); toast("Thank you! Your message was sent to Votrite Mobil. We will get back to you soon.",7000); }
  else if(h==="admin"){ $("#v-admin").classList.add("on"); admin(); }
  else if(h.startsWith("biz-")){ const b=BIZ.find(x=>x.id==h.slice(4)); if(!b){location.hash="home";return;}
    b.views++;
@@ -784,19 +789,8 @@ function render(){
  else location.hash="home";
 }
 function shopClick(id){const b=BIZ.find(x=>x.id==id); b.clicks++; toast("Opens "+b.name+"'s own website (click counted)");}
-// messages go to Votrite Mobil's own sender (AWS, account of VotRite), which emails them to the team
-const CONTACT_URL="https://6dmapz4h3bleddcfer44z4nzvm0iiegq.lambda-url.us-east-1.on.aws/";
-async function sendContact(f){
- const btn=f.querySelector("button"), label=btn.innerHTML; btn.disabled=true; btn.textContent="Sending…";
- const data={}; ["website","name","business","email","phone","interest","message"].forEach(n=>data[n]=(f.elements[n].value||"").trim());
- try{
-  const r=await fetch(CONTACT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  const j=await r.json().catch(()=>({}));
-  if(r.ok&&j.ok){ f.reset(); toast("Thank you! Your message was sent to Votrite Mobil. We will get back to you soon.",7000); }
-  else toast(j.error||"Sorry, your message could not be sent. Please email us at info@votrite.com",7000);
- }catch(e){ toast("Sorry, your message could not be sent. Please email us at info@votrite.com",7000); }
- finally{ btn.disabled=false; btn.innerHTML=label; }
-}
+// the form posts to FormSubmit (activated for info@votrite.com on 20 Nov 2026), which emails it and comes back to #thanks
+function prepContact(f){ const b=f.elements["Business"].value.trim(); f.elements["_subject"].value="Votrite Mobil Shop inquiry"+(b?" - "+b:""); }
 function go(f){filt=f; if(location.hash==="#browse") render(); else location.hash="browse";}
 function doSearch(){go({q:$("#q").value.trim()||undefined, city:$("#city").value||undefined});}
 function admin(){
