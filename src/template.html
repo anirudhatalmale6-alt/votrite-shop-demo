@@ -43,6 +43,7 @@ nav.top a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:2px;
 .hdr-r svg{font-size:18px}
 .hdr-r button{white-space:nowrap}
 @media (max-width:1400px){.cityb .lbl{display:none} nav.top a{padding:9px 11px}}
+@media (max-width:1300px){.hdr-r .lbl{display:none} nav.top a{padding:9px 9px}}
 .hdr-r .signup{background:var(--blue);color:#fff;padding:9px 16px;border-radius:10px}
 .hdr-r .signup:hover{background:#155ccc}
 .menu-btn{display:none!important}
@@ -334,7 +335,7 @@ footer .logo{color:#123a83}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:60;max-width:90vw;text-align:center}
 .toast.show{opacity:1}
 
-@media (max-width:1200px){
+@media (max-width:1000px){
   .menu-btn{display:flex!important}
   nav.top{display:none;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;padding:10px 16px 16px;box-shadow:0 10px 20px rgba(0,0,0,.3)}
   nav.top.open{display:flex}
@@ -344,10 +345,7 @@ footer .logo{color:#123a83}
   nav.top a{padding:11px 14px!important;font-size:15px!important}
 }
 @media (max-width:1100px){
-  nav.top a{padding:9px 9px;font-size:14px}
-  .hdr-r .lbl{display:none}
   .hdr{gap:12px}
-  nav.top a{padding:9px 7px!important;font-size:13.5px}
   .logo small{display:none}
   .hero .wrap{grid-template-columns:1fr}
   .stage{min-height:480px}
@@ -432,7 +430,6 @@ footer .logo{color:#123a83}
       <a href="#about" data-nav="about">About</a>
       <a href="#help" data-nav="help">Help</a>
       <a href="#contact" data-nav="contact">Contact</a>
-      <a href="#admin" data-nav="admin">Admin (demo)</a>
     </nav>
     <div class="hdr-r">
       <button class="cityb" onclick="go({})" title="All cities">@@globe@@<span class="lbl">All Cities</span></button>
@@ -629,11 +626,6 @@ footer .logo{color:#123a83}
         <label>Message<textarea rows="4" placeholder="Tell us about your business"></textarea></label>
         <button class="btn btn-gold">Send Message @@arrow@@</button>
       </form>
-      <div class="cinfo">
-        <div>@@pin@@<span>Address: <i>to be added</i></span></div>
-        <div>@@phone@@<span>Phone: <i>to be added</i></span></div>
-        <div>@@clock@@<span>Hours: <i>to be added</i></span></div>
-      </div>
     </div>
   </div></section></div>
 </div>
@@ -656,7 +648,7 @@ footer .logo{color:#123a83}
 <footer>
   <div class="wrap f1" style="padding-left:20px;padding-right:20px">
     <div><a class="logo" href="#home" style="font-size:23px"><svg viewBox="0 0 40 36"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span></a><div class="tg">MOBILE COMMERCE FOR A BETTER TOMORROW</div></div>
-    <div><div class="flinks"><a href="#home">Home</a><a href="#browse">Businesses</a><a href="#deals">Deals</a><a href="#advertise">Advertise</a><a href="#about">About</a><a href="#help">Help</a><a href="#contact">Contact</a></div>
+    <div><div class="flinks"><a href="#home">Home</a><a href="#browse">Businesses</a><a href="#deals">Deals</a><a href="#advertise">Advertise</a><a href="#about">About</a><a href="#help">Help</a><a href="#contact">Contact</a><a href="#admin">Admin (demo)</a></div>
       <div class="soc">@@facebook@@@@instagram@@@@xlogo@@@@youtube@@@@linkedin@@</div></div>
     <div class="fdisc"><b>Disclaimer:</b> Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div>
   </div>
