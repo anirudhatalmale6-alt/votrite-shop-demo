@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votrite Mobil Shop — demo</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06142e; --navy2:#0b2350; --blue:#1d6fe8; --blue2:#3b8bff; --sky:#7fb8ff;
+  --gold:#ffc21a; --gold2:#ffdf6b; --green:#28c76f; --ink:#0f1b33; --muted:#5d6b85;
+  --card:#ffffff; --line:#e3e8f2; --bg:#f3f6fb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+/* demo banner */
+.demo-bar{background:var(--gold);color:#3a2a00;font-size:13px;font-weight:600;text-align:center;padding:6px 10px}
+
+/* header */
+header{background:var(--navy);position:sticky;top:0;z-index:20;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.hdr{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:baseline;gap:6px;font-family:Montserrat;font-weight:900;font-size:22px;color:#fff;white-space:nowrap}
+.logo .v{background:linear-gradient(135deg,#38d39f,#1d6fe8);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:26px}
+.logo .m{color:var(--blue2)}
+.logo small{font-family:Inter;font-weight:600;font-size:11px;color:var(--gold);letter-spacing:.12em;margin-left:4px}
+nav.top{display:flex;gap:4px;margin-left:auto}
+nav.top a{color:#cfdcf5;font-weight:600;font-size:14px;padding:8px 12px;border-radius:8px}
+nav.top a.on,nav.top a:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:11px 20px;font-weight:700;font-size:14px}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2b2000}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.menu-btn{display:none;margin-left:auto;background:none;border:0;color:#fff;font-size:26px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(ellipse at 70% 120%,rgba(29,111,232,.55),transparent 60%),
+             radial-gradient(ellipse at 15% -20%,rgba(56,211,159,.25),transparent 55%),
+             linear-gradient(180deg,#040d20,#0b2350)}
+.hero:before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.5px);background-size:46px 46px;opacity:.18}
+.hero .globe{position:absolute;right:-160px;bottom:-330px;width:720px;height:720px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#3b8bff 0,#123a83 38%,#071a3f 70%);
+  box-shadow:0 0 120px 20px rgba(59,139,255,.45), inset -40px -40px 120px rgba(0,0,0,.6);opacity:.9}
+.hero .wrap{position:relative;padding-top:64px;padding-bottom:70px}
+.eyebrow{font-size:12px;letter-spacing:.32em;color:var(--sky);font-weight:600}
+.h1{font-family:Montserrat;font-weight:900;line-height:1.02;margin:14px 0 6px;font-size:clamp(38px,6.4vw,74px)}
+.h1 .w{color:#fff;display:block}
+.h1 .g{display:block;background:linear-gradient(180deg,#fff2a8,var(--gold) 55%,#e5a100);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{letter-spacing:.38em;font-weight:600;font-size:13px;color:#dfe8ff;margin-bottom:28px}
+.searchbox{display:flex;background:#fff;border-radius:999px;padding:6px;max-width:640px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.searchbox input{flex:1;border:0;outline:0;font-size:16px;padding:10px 16px;border-radius:999px;min-width:0}
+.searchbox select{border:0;outline:0;background:#eef3fb;border-radius:999px;padding:0 14px;font-weight:600;color:var(--ink)}
+.searchbox .btn{margin-left:6px}
+.shop3{display:flex;gap:26px;margin-top:26px;font-family:Montserrat;font-weight:800;font-size:18px;flex-wrap:wrap}
+.shop3 span:last-child{color:var(--blue2)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px;max-width:760px}
+.stat{border-left:2px solid rgba(255,255,255,.18);padding-left:14px}
+.stat b{display:block;font-family:Montserrat;font-size:13px;letter-spacing:.06em}
+.stat i{font-style:normal;color:var(--sky);font-size:12px;letter-spacing:.08em}
+
+/* sections */
+section{padding:44px 0}
+.sec-h{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}
+.sec-h h2{font-family:Montserrat;font-weight:800;font-size:24px}
+.sec-h a{color:var(--blue);font-weight:600;font-size:14px}
+.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 8px;text-align:center;font-weight:600;font-size:13px;transition:.15s}
+.cat:hover,.cat.on{border-color:var(--blue);box-shadow:0 6px 18px rgba(29,111,232,.15);transform:translateY(-2px)}
+.cat .ic{font-size:26px;display:block;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.biz{background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:.15s;cursor:pointer;position:relative}
+.biz:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,27,51,.12)}
+.cover{height:130px;position:relative;display:flex;align-items:center;justify-content:center;font-size:52px}
+.badge{position:absolute;top:10px;left:10px;background:var(--gold);color:#2b2000;font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:.05em}
+.deal{position:absolute;top:10px;right:10px;background:#e8344e;color:#fff;font-weight:700;font-size:11px;padding:4px 10px;border-radius:999px}
+.biz .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.biz h3{font-size:16px;font-weight:700}
+.meta{color:var(--muted);font-size:13px}
+.rating{color:#e5a100;font-size:13px;font-weight:600}
+.biz .row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:10px}
+.pill{white-space:nowrap;background:#eef3fb;color:var(--blue);font-weight:600;font-size:12px;padding:4px 10px;border-radius:999px}
+
+.deals{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dealcard{border-radius:18px;padding:20px;color:#fff;position:relative;overflow:hidden;cursor:pointer;min-height:150px}
+.dealcard h4{font-family:Montserrat;font-size:26px;font-weight:900;line-height:1.05}
+.dealcard p{opacity:.9;font-size:14px;margin-top:6px}
+.dealcard .who{position:absolute;bottom:14px;left:20px;font-size:12px;font-weight:700;opacity:.9}
+.dealcard .em{position:absolute;right:14px;bottom:6px;font-size:58px;opacity:.95}
+
+.cta{background:linear-gradient(120deg,var(--navy),#123a83);color:#fff;border-radius:24px;padding:34px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.cta h2{font-family:Montserrat;font-weight:900;font-size:30px;line-height:1.1}
+.cta h2 span{color:var(--gold)}
+.cta p{color:#cfdcf5;margin-top:10px}
+
+/* business page */
+.bpage-hero{height:220px;display:flex;align-items:center;justify-content:center;font-size:96px;position:relative}
+.bpage{display:grid;grid-template-columns:2fr 1fr;gap:22px;margin-top:-50px;position:relative}
+.panel{background:#fff;border-radius:20px;border:1px solid var(--line);padding:22px}
+.bhead{display:flex;gap:16px;align-items:center}
+.blogo{width:76px;height:76px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:38px;border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.bhead h1{font-family:Montserrat;font-size:26px;font-weight:800}
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.prod{border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.prod .pi{font-size:40px}
+.prod b{display:block;font-size:14px;margin-top:6px}
+.prod span{color:var(--blue);font-weight:700}
+.side .item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.side .item:last-child{border:0}
+.side .btn{width:100%;justify-content:center;margin-top:10px}
+.back{display:inline-block;margin:18px 0 0;color:var(--blue);font-weight:600}
+.dealbox{background:linear-gradient(120deg,#e8344e,#ff7a45);color:#fff;border-radius:16px;padding:16px 18px;margin-top:16px}
+.dealbox b{font-family:Montserrat;font-size:20px}
+
+/* advertise */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.plan.feat{border:2px solid var(--gold);box-shadow:0 14px 34px rgba(255,194,26,.25);position:relative}
+.plan.feat:before{content:"MOST POPULAR";position:absolute;top:-12px;left:24px;background:var(--gold);color:#2b2000;font-weight:800;font-size:11px;padding:4px 10px;border-radius:999px}
+.plan h3{font-family:Montserrat;font-size:20px}
+.plan .price{font-family:Montserrat;font-size:30px;font-weight:900}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:600}
+.plan .btn{justify-content:center}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;color:#33415c;flex:1}
+.plan li:before{content:"✓ ";color:var(--green);font-weight:800}
+.note{color:var(--muted);font-size:13px;margin-top:12px}
+
+/* admin */
+.admin-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.kpi span{color:var(--muted);font-size:13px}
+.kpi b{display:block;font-family:Montserrat;font-size:28px;margin-top:4px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);font-size:14px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{background:#f7f9fd;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.st{font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px}
+.st.live{background:#e5f8ee;color:#138a4b}.st.pending{background:#fff4d6;color:#8a6200}.st.paused{background:#eef1f6;color:#5d6b85}
+.act button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;margin-right:4px}
+.act button.ok{background:var(--green);color:#fff;border-color:var(--green)}
+
+footer{background:var(--navy);color:#9fb3d9;margin-top:40px;padding:34px 0;font-size:13px}
+footer .f{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:#fff}
+.sep{letter-spacing:.3em;color:#cfdcf5;font-size:11px;margin-top:6px}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+.view{display:none}.view.on{display:block}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:50}
+.toast.show{opacity:1}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,1fr)} .cats{grid-template-columns:repeat(4,1fr)}
+  .deals{grid-template-columns:1fr 1fr} .cta{grid-template-columns:1fr} .bpage{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr} .admin-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  nav.top{display:none;position:absolute;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;padding:10px}
+  nav.top.open{display:flex} .menu-btn{display:block}
+  .grid,.deals{grid-template-columns:1fr} .cats{grid-template-columns:repeat(4,1fr);gap:8px}
+  .cat{padding:12px 4px;font-size:11px} .stats{grid-template-columns:1fr 1fr} .prods{grid-template-columns:1fr 1fr}
+  .searchbox{flex-wrap:wrap;border-radius:18px} .searchbox input{flex-basis:100%} .searchbox select{padding:10px 12px;flex:1}
+  .hero .globe{width:420px;height:420px;right:-180px;bottom:-240px}
+  table{font-size:12px} th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){display:none}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">DEMO — sample businesses and figures for illustration only · shop.votritemobil.com</div>
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="#home"><span><span class="v">V</span>otrite</span> <span class="m">Mobil</span><small>SHOP</small></a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav.top').classList.toggle('open')">☰</button>
+    <nav class="top">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#browse" data-nav="browse">Businesses</a>
+      <a href="#deals" data-nav="deals">Deals</a>
+      <a href="#advertise" data-nav="advertise">Advertise</a>
+      <a href="#admin" data-nav="admin">Admin (demo)</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<div class="view" id="v-home">
+  <div class="hero"><div class="globe"></div>
+    <div class="wrap">
+      <div class="eyebrow">MOBILE COMMERCE FOR A BETTER TOMORROW</div>
+      <div class="h1"><span class="w">WORLD OF</span><span class="g">OPPORTUNITY</span></div>
+      <div class="tag">GLOBAL REACH. REAL GROWTH.</div>
+      <form class="searchbox" onsubmit="event.preventDefault();doSearch()">
+        <input id="q" placeholder="Search businesses, products, deals…" aria-label="Search">
+        <select id="city" aria-label="City"><option value="">All cities</option></select>
+        <button class="btn btn-blue">Search</button>
+      </form>
+      <div class="shop3"><span>Shop Local.</span><span>Shop Global.</span><span>Shop Mobile.</span></div>
+      <div class="stats">
+        <div class="stat"><b>MORE</b><i>CUSTOMERS</i></div>
+        <div class="stat"><b>BIGGER</b><i>OPPORTUNITIES</i></div>
+        <div class="stat"><b>STRONGER</b><i>BUSINESSES</i></div>
+        <div class="stat"><b>A BRIGHTER</b><i>TOMORROW</i></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <section>
+      <div class="sec-h"><h2>Browse by category</h2></div>
+      <div class="cats" id="cats-home"></div>
+    </section>
+    <section style="padding-top:0">
+      <div class="sec-h"><h2>⭐ Featured businesses</h2><a href="#browse">View all →</a></div>
+      <div class="grid" id="featured"></div>
+    </section>
+    <section style="padding-top:0">
+      <div class="sec-h"><h2>🔥 Today's deals</h2><a href="#deals">All deals →</a></div>
+      <div class="deals" id="deals-home"></div>
+    </section>
+    <section style="padding-top:0">
+      <div class="cta">
+        <div><h2>Put your business in front of <span>more customers</span></h2>
+        <p>List your products and deals on Votrite Mobil Shop. Customers find you by category and city, and every view and click is counted for you.</p></div>
+        <div><a class="btn btn-gold" href="#advertise">Advertise with us →</a></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- BROWSE -->
+<div class="view" id="v-browse"><div class="wrap">
+  <section>
+    <div class="sec-h"><h2 id="browse-title">All businesses</h2><a href="#browse" onclick="event.preventDefault();go({})">Clear filters</a></div>
+    <div class="cats" id="cats-browse" style="margin-bottom:22px"></div>
+    <div class="grid" id="all"></div>
+  </section>
+</div></div>
+
+<!-- DEALS -->
+<div class="view" id="v-deals"><div class="wrap">
+  <section><div class="sec-h"><h2>🔥 All current deals</h2></div><div class="deals" id="deals-all"></div></section>
+</div></div>
+
+<!-- BUSINESS PAGE -->
+<div class="view" id="v-biz"></div>
+
+<!-- ADVERTISE -->
+<div class="view" id="v-advertise"><div class="wrap">
+  <section>
+    <div class="sec-h"><h2>Advertise on Votrite Mobil Shop</h2></div>
+    <p class="meta" style="max-width:680px">Choose how visible your business should be. Every package includes your own business page with logo, photos, products, deals, location and a link to your shop.</p>
+    <div class="plans" style="margin-top:22px">
+      <div class="plan"><h3>Basic listing</h3><div class="price">Free <small>to start</small></div>
+        <ul><li>Business page with logo &amp; photos</li><li>Up to 6 products</li><li>Shown in category &amp; city search</li><li>Monthly view &amp; click report</li></ul>
+        <button class="btn btn-ghost" onclick="toast('Demo: sign-up form comes in Step 2')">Get listed</button></div>
+      <div class="plan feat"><h3>Featured</h3><div class="price">$ — <small>/ month</small></div>
+        <ul><li>Everything in Basic</li><li>⭐ Top spot on the home page</li><li>Gold “Featured” badge</li><li>Unlimited products &amp; deals</li><li>Live view &amp; click stats</li></ul>
+        <button class="btn btn-gold" onclick="toast('Demo: online payment comes in Step 2')">Go Featured</button></div>
+      <div class="plan"><h3>Deal spotlight</h3><div class="price">$ — <small>/ deal</small></div>
+        <ul><li>Your deal in “Today's deals”</li><li>Highlighted with a countdown</li><li>Great for launches &amp; sales</li></ul>
+        <button class="btn btn-ghost" onclick="toast('Demo: online payment comes in Step 2')">Promote a deal</button></div>
+    </div>
+    <p class="note">Prices are left blank on purpose: you decide them. Ads can start free to fill the site, then switch to paid.</p>
+  </section>
+</div></div>
+
+<!-- ADMIN -->
+<div class="view" id="v-admin"><div class="wrap">
+  <section>
+    <div class="sec-h"><h2>Admin — ads (demo)</h2></div>
+    <div class="admin-top">
+      <div class="kpi"><span>Live businesses</span><b id="k-live">0</b></div>
+      <div class="kpi"><span>Waiting for approval</span><b id="k-pend">0</b></div>
+      <div class="kpi"><span>Views this month</span><b id="k-views">0</b></div>
+      <div class="kpi"><span>Clicks to shops</span><b id="k-clicks">0</b></div>
+    </div>
+    <table><thead><tr><th>Business</th><th>Status</th><th>Views</th><th>Clicks</th><th>Actions</th></tr></thead><tbody id="adm"></tbody></table>
+    <p class="note">In the real version only you (and staff you add) can see this page, with its own login.</p>
+  </section>
+</div></div>
+
+<footer><div class="wrap f">
+  <div><b>Votrite Mobil Shop</b><div class="sep">EMPOWERING A MORE CONNECTED WORLD</div></div>
+  <div>Separate from VotRite voting · no ads on any ballot page</div>
+</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const CATS=[["food","🍽️","Food & Drink"],["fashion","👟","Fashion"],["tech","⌚","Electronics"],["home","🛋️","Home"],["beauty","💄","Beauty"],["services","🛠️","Services"],["travel","✈️","Travel"],["health","🩺","Health"]];
+const G={food:["#ff9f43","#ee5a24"],fashion:["#a29bfe","#6c5ce7"],tech:["#48dbfb","#1d6fe8"],home:["#55efc4","#00a884"],beauty:["#fd79a8","#e84393"],services:["#ffeaa7","#fdcb6e"],travel:["#74b9ff","#0984e3"],health:["#81ecec","#00b5b5"]};
+let BIZ=[
+ {id:1,name:"Bella Napoli Pizzeria",cat:"food",city:"New York",icon:"🍕",rating:4.8,featured:true,deal:"2 pizzas for $20",status:"live",views:2140,clicks:312,phone:"(555) 010-2001",
+  about:"Wood-fired Neapolitan pizza, fresh pasta and homemade desserts since 2009.",products:[["🍕","Margherita","$14"],["🍝","Fresh pasta","$16"],["🍰","Tiramisu","$7"]]},
+ {id:2,name:"Urban Sole Sneakers",cat:"fashion",city:"London",icon:"👟",rating:4.7,featured:true,deal:"20% off this week",status:"live",views:1875,clicks:268,phone:"(555) 010-2002",
+  about:"Limited sneakers, streetwear and accessories, shipped worldwide.",products:[["👟","Classic white","$89"],["🧢","Logo cap","$25"],["🎒","Daypack","$59"]]},
+ {id:3,name:"TechHub Store",cat:"tech",city:"Tokyo",icon:"⌚",rating:4.9,featured:true,deal:"Free case with any watch",status:"live",views:2960,clicks:441,phone:"(555) 010-2003",
+  about:"Smartwatches, phones and audio with expert setup help in store.",products:[["⌚","Smartwatch","$199"],["🎧","Wireless buds","$79"],["📱","Phone case","$19"]]},
+ {id:4,name:"Casa Bonita Home",cat:"home",city:"São Paulo",icon:"🛋️",rating:4.6,featured:true,deal:"",status:"live",views:1320,clicks:154,phone:"(555) 010-2004",
+  about:"Furniture and décor made by local artisans.",products:[["🛋️","Linen sofa","$899"],["🪴","Planter set","$45"],["🕯️","Candles","$18"]]},
+ {id:5,name:"Glow Beauty Studio",cat:"beauty",city:"Dubai",icon:"💄",rating:4.8,featured:false,deal:"First visit -30%",status:"live",views:980,clicks:133,phone:"(555) 010-2005",
+  about:"Hair, nails and skin care. Book online in seconds.",products:[["💅","Manicure","$35"],["💇","Cut & style","$60"],["🧴","Skin kit","$42"]]},
+ {id:6,name:"FixIt Pro Repairs",cat:"services",city:"New York",icon:"🛠️",rating:4.5,featured:false,deal:"",status:"live",views:640,clicks:71,phone:"(555) 010-2006",
+  about:"Phone, laptop and appliance repairs, same day for most jobs.",products:[["📱","Screen repair","$79"],["💻","Laptop tune-up","$59"],["🔌","Home visit","$40"]]},
+ {id:7,name:"Sunset Travel Co.",cat:"travel",city:"Sydney",icon:"✈️",rating:4.7,featured:false,deal:"Weekend trips from $199",status:"live",views:1110,clicks:205,phone:"(555) 010-2007",
+  about:"Hand-picked trips, cruises and weekend getaways.",products:[["🏝️","Island weekend","$199"],["🚢","Coastal cruise","$549"],["🏔️","Mountain lodge","$289"]]},
+ {id:8,name:"Green Leaf Pharmacy",cat:"health",city:"London",icon:"🩺",rating:4.6,featured:false,deal:"",status:"live",views:520,clicks:48,phone:"(555) 010-2008",
+  about:"Your neighborhood pharmacy with free local delivery.",products:[["💊","Vitamins","$12"],["🩹","First-aid kit","$24"],["🧴","Sunscreen","$15"]]},
+ {id:9,name:"Café Aroma",cat:"food",city:"Sydney",icon:"☕",rating:4.4,featured:false,deal:"",status:"pending",views:0,clicks:0,phone:"(555) 010-2009",
+  about:"Specialty coffee and fresh pastries.",products:[["☕","Flat white","$4"],["🥐","Croissant","$3"],["🍪","Cookies","$2"]]},
+ {id:10,name:"Pixel Phones",cat:"tech",city:"Dubai",icon:"📱",rating:4.3,featured:false,deal:"Trade-in bonus $50",status:"pending",views:0,clicks:0,phone:"(555) 010-2010",
+  about:"New and certified refurbished phones with warranty.",products:[["📱","Refurb phone","$249"],["🔋","Power bank","$29"],["🎧","Headset","$39"]]},
+ {id:11,name:"Studio Fit Gym",cat:"health",city:"Tokyo",icon:"🏋️",rating:4.5,featured:false,deal:"",status:"paused",views:410,clicks:37,phone:"(555) 010-2011",
+  about:"Classes, personal training and a 24/7 gym floor.",products:[["🏋️","Monthly pass","$39"],["🧘","Yoga class","$12"],["🥤","Protein shake","$6"]]}
+];
+let filt={};
+const $=s=>document.querySelector(s);
+const live=()=>BIZ.filter(b=>b.status==="live");
+const catName=c=>(CATS.find(x=>x[0]===c)||["","",""])[2];
+const grad=c=>`linear-gradient(135deg,${G[c][0]},${G[c][1]})`;
+
+function card(b){return `<div class="biz" onclick="location.hash='biz-${b.id}'">
+ <div class="cover" style="background:${grad(b.cat)}">${b.featured?'<span class="badge">⭐ FEATURED</span>':''}${b.deal?'<span class="deal">DEAL</span>':''}${b.icon}</div>
+ <div class="bd"><h3>${b.name}</h3><div class="meta">📍 ${b.city} · ${catName(b.cat)}</div><div class="rating">★ ${b.rating}</div>
+ <div class="row"><span class="pill">View page</span>${b.deal?`<span class="meta" style="color:#e8344e;font-weight:600;text-align:right">${b.deal}</span>`:''}</div></div></div>`}
+function dealCard(b){return `<div class="dealcard" style="background:${grad(b.cat)}" onclick="location.hash='biz-${b.id}'">
+ <h4>${b.deal}</h4><p>${b.name}</p><div class="who">📍 ${b.city}</div><div class="em">${b.icon}</div></div>`}
+function cats(el){$(el).innerHTML=CATS.map(c=>`<a class="cat ${filt.cat===c[0]?'on':''}" href="#browse" onclick="event.preventDefault();go({cat:'${c[0]}'})"><span class="ic">${c[1]}</span>${c[2]}</a>`).join("")}
+function count(b,k){b[k]++;}
+
+function render(){
+ const h=location.hash.replace("#","")||"home";
+ document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
+ document.querySelectorAll("nav.top a").forEach(a=>a.classList.toggle("on",a.dataset.nav===h.split("-")[0]));
+ document.querySelector("nav.top").classList.remove("open");
+ window.scrollTo(0,0);
+ if(h==="home"){ $("#v-home").classList.add("on"); cats("#cats-home");
+   $("#featured").innerHTML=live().filter(b=>b.featured).map(card).join("");
+   $("#deals-home").innerHTML=live().filter(b=>b.deal).slice(0,3).map(dealCard).join(""); }
+ else if(h==="browse"){ $("#v-browse").classList.add("on"); cats("#cats-browse");
+   let list=live();
+   if(filt.cat) list=list.filter(b=>b.cat===filt.cat);
+   if(filt.city) list=list.filter(b=>b.city===filt.city);
+   if(filt.q){const q=filt.q.toLowerCase(); list=list.filter(b=>(b.name+" "+b.about+" "+b.products.map(p=>p[1]).join(" ")+" "+catName(b.cat)).toLowerCase().includes(q));}
+   list.sort((a,b)=>(b.featured-a.featured)||(b.rating-a.rating));
+   $("#browse-title").textContent=[filt.cat?catName(filt.cat):"All businesses",filt.city?"in "+filt.city:"",filt.q?`matching “${filt.q}”`:""].filter(Boolean).join(" ");
+   $("#all").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No businesses match yet.</div>'; }
+ else if(h==="deals"){ $("#v-deals").classList.add("on"); $("#deals-all").innerHTML=live().filter(b=>b.deal).map(dealCard).join(""); }
+ else if(h==="advertise"){ $("#v-advertise").classList.add("on"); }
+ else if(h==="admin"){ $("#v-admin").classList.add("on"); admin(); }
+ else if(h.startsWith("biz-")){ const b=BIZ.find(x=>x.id==h.slice(4)); if(!b){location.hash="home";return;}
+   count(b,"views");
+   $("#v-biz").innerHTML=`<div class="bpage-hero" style="background:${grad(b.cat)}">${b.icon}</div>
+   <div class="wrap"><div class="bpage">
+     <div class="panel"><div class="bhead"><div class="blogo" style="background:${grad(b.cat)}">${b.icon}</div>
+       <div><h1>${b.name}</h1><div class="meta">📍 ${b.city} · ${catName(b.cat)} · <span class="rating">★ ${b.rating}</span> ${b.featured?'· <b style="color:#b88a00">⭐ Featured</b>':''}</div></div></div>
+       <p style="margin-top:14px">${b.about}</p>
+       ${b.deal?`<div class="dealbox"><div style="font-size:12px;font-weight:700;letter-spacing:.1em">CURRENT DEAL</div><b>${b.deal}</b></div>`:''}
+       <h3 style="margin-top:20px">Products</h3>
+       <div class="prods">${b.products.map(p=>`<div class="prod"><div class="pi">${p[0]}</div><b>${p[1]}</b><span>${p[2]}</span></div>`).join("")}</div>
+     </div>
+     <div class="panel side">
+       <div class="item">📍 <span>${b.city}<br><a style="color:var(--blue)" href="#" onclick="event.preventDefault();toast('Opens the map')">Get directions</a></span></div>
+       <div class="item">📞 <span>${b.phone}</span></div>
+       <div class="item">🕒 <span>Open today 9:00 – 20:00</span></div>
+       <button class="btn btn-blue" onclick="shopClick(${b.id})">Visit their shop →</button>
+       <button class="btn btn-ghost" onclick="toast('Shared!')">Share</button>
+     </div>
+   </div><a class="back" href="#browse">← Back to businesses</a></div>`;
+   $("#v-biz").classList.add("on"); }
+ else location.hash="home";
+}
+function shopClick(id){const b=BIZ.find(x=>x.id==id); count(b,"clicks"); toast("Opens "+b.name+"'s own website (click counted)");}
+function go(f){filt=f; if(location.hash==="#browse") render(); else location.hash="browse";}
+function doSearch(){go({q:$("#q").value.trim()||undefined, city:$("#city").value||undefined});}
+function admin(){
+ $("#k-live").textContent=BIZ.filter(b=>b.status==="live").length;
+ $("#k-pend").textContent=BIZ.filter(b=>b.status==="pending").length;
+ $("#k-views").textContent=BIZ.reduce((s,b)=>s+b.views,0).toLocaleString();
+ $("#k-clicks").textContent=BIZ.reduce((s,b)=>s+b.clicks,0).toLocaleString();
+ const order={pending:0,live:1,paused:2};
+ $("#adm").innerHTML=[...BIZ].sort((a,b)=>order[a.status]-order[b.status]).map(b=>`<tr>
+  <td><b>${b.icon} ${b.name}</b><div class="meta">${b.city} · ${catName(b.cat)}${b.featured?' · ⭐ Featured':''}</div></td>
+  <td><span class="st ${b.status}">${b.status==="pending"?"Waiting":b.status==="live"?"Live":"Paused"}</span></td>
+  <td>${b.views.toLocaleString()}</td><td>${b.clicks.toLocaleString()}</td>
+  <td class="act">${b.status==="pending"?`<button class="ok" onclick="setSt(${b.id},'live')">Approve</button>`:''}
+   ${b.status==="live"?`<button onclick="setSt(${b.id},'paused')">Pause</button><button onclick="feat(${b.id})">${b.featured?'Unfeature':'Feature'}</button>`:''}
+   ${b.status==="paused"?`<button onclick="setSt(${b.id},'live')">Resume</button>`:''}</td></tr>`).join("");
+}
+function setSt(id,s){BIZ.find(b=>b.id==id).status=s; admin(); toast(s==="live"?"Approved: now visible on the site":"Paused: hidden from the site");}
+function feat(id){const b=BIZ.find(x=>x.id==id); b.featured=!b.featured; admin(); toast(b.featured?"Now featured on the home page":"Removed from featured");}
+function toast(t){const e=$("#toast"); e.textContent=t; e.classList.add("show"); clearTimeout(e._t); e._t=setTimeout(()=>e.classList.remove("show"),2200);}
+[...new Set(BIZ.map(b=>b.city))].sort().forEach(c=>$("#city").insertAdjacentHTML("beforeend",`<option>${c}</option>`));
+window.addEventListener("hashchange",render); render();
+</script>
+</body>
+</html>
