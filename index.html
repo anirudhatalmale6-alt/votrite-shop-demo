@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Votrite Mobil Shop — demo</title>
+<title>Votrite Mobil Shop — shopvotritemobil.com</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#071633">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,8 @@ nav.top a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:2px;
 .hdr-r button,.hdr-r a{display:flex;align-items:center;gap:7px;background:none;border:0;color:#e4ecfb;font-weight:600;font-size:14px;padding:8px 10px;border-radius:9px}
 .hdr-r button:hover,.hdr-r a:hover{background:rgba(255,255,255,.07)}
 .hdr-r svg{font-size:18px}
+.hdr-r .signup{background:var(--blue);color:#fff;padding:9px 16px;border-radius:10px}
+.hdr-r .signup:hover{background:#155ccc}
 .menu-btn{display:none!important}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:14px 26px;font-weight:700;font-size:15px;transition:.15s}
@@ -111,6 +113,14 @@ nav.top a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:2px;
 .strip b{display:block;font-family:Montserrat;font-size:14px;letter-spacing:.03em}
 .strip span{color:#b9c8e6;font-size:13px}
 
+.band{background:#fff;border-bottom:1px solid var(--line)}
+.band .wrap{display:grid;grid-template-columns:2.2fr repeat(4,1fr);gap:18px;align-items:center;padding-top:24px;padding-bottom:24px}
+.band h2{font-family:Montserrat;font-weight:800;font-size:22px;color:#0a2a6b}
+.band p{color:var(--muted);font-size:13.5px;margin-top:4px;max-width:520px}
+.bs{text-align:center;border-left:1px solid var(--line);padding:0 6px}
+.bs svg{font-size:32px;color:#0a2a6b;margin:0 auto 4px;display:block}
+.bs b{display:block;font-family:Montserrat;font-weight:800;font-size:19px}
+.bs span{font-size:12px;color:var(--muted)}
 /* sections */
 section{padding:42px 0}
 .sec-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
@@ -311,6 +321,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   nav.top a.on:after{display:none}
   .hdr-r .lbl{display:none}
   .strip .wrap{grid-template-columns:1fr 1fr;gap:18px}
+  .band .wrap{grid-template-columns:repeat(4,1fr)} .band .bt{grid-column:1/-1} .bs:nth-child(2){border:0}
   .strip .it{border:0;padding:0}
   .grid{grid-template-columns:1fr 1fr} .cats{grid-template-columns:repeat(4,1fr)}
   .cities{grid-template-columns:repeat(3,1fr)}
@@ -320,6 +331,10 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .ahero .wrap{grid-template-columns:1fr} .aimg{display:none}
   .two{grid-template-columns:1fr} .vals{grid-template-columns:1fr 1fr}
   .discblk .wrap{flex-direction:column;gap:8px}
+}
+@media (max-width:380px){
+  .logo{font-size:18px} .logo small{display:none} .hdr-r button[title="Sign In"]{display:none}
+  .act button{padding:4px 7px} td,th{padding:10px 8px}
 }
 @media (max-width:600px){
   .wrap{padding:0 16px}
@@ -342,6 +357,9 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .stage{min-height:420px}
   .phone{left:50%}
   .strip .wrap{grid-template-columns:1fr}
+  .band .wrap{grid-template-columns:1fr 1fr} .bs{border:0}
+  .hdr-r .signup{padding:8px 11px;font-size:13px}
+  .hdr-r{gap:0} .hdr-r button{padding:8px 7px} .hdr-r .cityb{display:none}
   .strip svg{font-size:32px}
   .panels,.grid,.deals{grid-template-columns:1fr}
   .cats{gap:8px} .cat{padding:12px 4px;font-size:11px}
@@ -357,7 +375,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
 </style>
 </head>
 <body>
-<div class="demo-bar">DEMONSTRATION WEBSITE ONLY • SAMPLE BUSINESSES • SAMPLE PRODUCTS • SAMPLE FIGURES FOR ILLUSTRATION PURPOSES ONLY</div>
+<div class="demo-bar">SHOPVOTRITEMOBIL.COM • DEMONSTRATION WEBSITE ONLY • SAMPLE BUSINESSES • SAMPLE PRODUCTS • SAMPLE FIGURES FOR ILLUSTRATION PURPOSES ONLY</div>
 <header>
   <div class="wrap hdr">
     <a class="logo" href="#home" aria-label="Votrite Mobil Shop home">
@@ -373,8 +391,9 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <a href="#admin" data-nav="admin">Admin (demo)</a>
     </nav>
     <div class="hdr-r">
-      <button onclick="go({})" title="All cities"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span class="lbl">All Cities</span></button>
-      <button onclick="toast('Demo: business accounts come in Step 2')" title="Account"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="lbl">Account</span></button>
+      <button class="cityb" onclick="go({})" title="All cities"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span class="lbl">All Cities</span></button>
+      <button onclick="toast('Demo: business sign-in comes in Step 2')" title="Sign In"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="lbl">Sign In</span></button>
+      <button class="signup" onclick="location.hash='advertise'">Sign Up</button>
       <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav.top').classList.toggle('open')"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
   </div>
@@ -421,6 +440,13 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
     <div class="it"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><div><b>STRONGER BUSINESSES</b><span>Build your online presence through dedicated listings.</span></div></div>
     <div class="it"><svg class="i" viewBox="0 0 24 24"><path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4zm0 0c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/></svg><div><b>A BRIGHTER TOMORROW</b><span>Support economic growth and community engagement.</span></div></div>
   </div></div>
+  <div class="band"><div class="wrap">
+    <div class="bt"><h2>Shop Local. Shop Global. Shop Mobile.</h2><p>Votrite Mobil provides a platform where businesses can create listings, promote offers, and connect with customers through mobile commerce solutions.</p></div>
+    <div class="bs"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><b>100+</b><span>Cities</span></div>
+    <div class="bs"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.6"/><path d="M17 14a5 5 0 0 1 5 5"/></svg><b>10,000+</b><span>Sample Businesses</span></div>
+    <div class="bs"><svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>50,000+</b><span>Sample Products</span></div>
+    <div class="bs"><svg class="i" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg><b>1M+</b><span>Opportunities</span></div>
+  </div></div>
   <div class="wrap">
     <section>
       <div class="sec-h"><h2>Featured on Votrite Mobil Shop</h2><a class="va" href="#browse" onclick="filt={}">View All <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -466,6 +492,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
 <div class="view" id="v-advertise">
   <div class="ahero"><div class="wrap">
     <div>
+      <div class="eyebrow" style="margin-bottom:10px">GROW YOUR BUSINESS</div>
       <h1>Advertise on <span style="white-space:nowrap"><svg viewBox="0 0 40 36" style="width:.78em;height:.72em;margin-right:-.04em"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite</span> <span class="m">Mobil</span> Shop</h1>
       <p>Promote your business, products, services, events and special offers to local and global audiences.</p>
       <div class="abadges">
@@ -481,19 +508,21 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   </div></div>
   <div class="wrap">
     <section>
+      <div style="text-align:center;margin-bottom:30px"><h2 style="font-family:Montserrat;font-weight:800;font-size:26px">Choose the plan that works for you</h2>
+        <p class="meta" style="font-size:15px;max-width:640px;margin:6px auto 0">Every package includes your own business page with logo, photos, products, deals, location and a link to your shop.</p></div>
       <div class="plans">
         <div class="plan feat"><span class="flag">LAUNCH PROMO</span><h3>First Ad — Launch Promotion</h3>
           <div class="pr">FREE <small>your first advertisement</small></div>
           <ul><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Business profile page</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Business logo and photos</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Product or service listings</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Location and contact information</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Shown in category &amp; city search</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Basic performance reporting</li></ul>
-          <button class="btn btn-gold" onclick="toast('Demo: sign-up form comes in Step 2')">Post My Free Advertisement <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <button class="btn btn-gold" onclick="toast('Demo: sign-up form comes in Step 2')">Post Free Advertisement <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
         <div class="plan"><h3>Additional Advertisements</h3><div class="sm">Flexible options to grow your visibility.</div>
           <div class="pr">$ — <small>/ ad while it runs</small></div>
           <ul><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Add more products or services</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Additional locations</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Run as long as you keep it on</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Pause or stop at any time</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Independent view &amp; click metrics</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Customise each advertisement</li></ul>
-          <button class="btn btn-ghost" onclick="toast('Demo: online payment comes in Step 2')">Add Another Advertisement</button></div>
+          <button class="btn btn-ghost" onclick="toast('Demo: online payment comes in Step 2')">Add Advertisement</button></div>
         <div class="plan"><h3>Featured Placement</h3><div class="sm">Premium visibility for greater results.</div>
           <div class="pr">$ — <small>extra</small></div>
           <ul><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Top spot on the homepage</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Gold “Featured” badge</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Priority in search results</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Featured in “Latest Deals”</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>More views and customer engagement</li><li><svg class="i" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Stand out from the competition</li></ul>
-          <button class="btn btn-blue" onclick="toast('Demo: online payment comes in Step 2')">Upgrade to Featured <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <button class="btn btn-blue" onclick="toast('Demo: online payment comes in Step 2')">Upgrade Listing <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
       </div>
       <p class="note">Prices are left blank on purpose: Votrite Mobil sets them before launch.</p>
     </section>
@@ -557,12 +586,12 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <div class="kpi"><span>Views this month</span><b id="k-views">0</b></div>
       <div class="kpi"><span>Clicks to shops</span><b id="k-clicks">0</b></div>
     </div>
-    <table><thead><tr><th>Business</th><th>Status</th><th>Views</th><th>Clicks</th><th>Actions</th></tr></thead><tbody id="adm"></tbody></table>
+    <div style="overflow-x:auto"><table><thead><tr><th>Business</th><th>Status</th><th>Views</th><th>Clicks</th><th>Actions</th></tr></thead><tbody id="adm"></tbody></table></div>
     <p class="note">In the real version only Votrite Mobil staff can see this page, with its own login.</p>
   </section>
 </div></div>
 
-<div class="discblk" id="discblk"><div class="wrap"><h3><svg class="i" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>Disclaimer</h3><div>
+<div class="discblk" id="discblk"><div class="wrap"><h3><svg class="i" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>Important Disclaimer</h3><div>
   <p>Votrite Mobil Shop is a promotional and demonstration platform. Any sample businesses, advertisements, products, services, pricing, locations, customer reviews, ratings, sales figures, graphics, and performance metrics displayed on this website are fictional or used solely for illustrative, educational, marketing, or demonstration purposes.</p>
   <p>No representation is made that any depicted business results, revenues, customer activity, endorsements, or commercial outcomes are actual or guaranteed. Individual results may vary and depend on market conditions, business practices, and other factors. Users should independently verify any business information before making purchasing or investment decisions.</p>
 </div></div></div>
@@ -574,7 +603,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <div class="soc"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><svg class="i" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7h.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></div></div>
     <div class="fdisc"><b>Disclaimer:</b> Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div>
   </div>
-  <div class="f2"><div class="wrap"><span>© 2026 Votrite Mobil. All Rights Reserved. Demonstration website only. Separate from VotRite voting.</span><span class="acw"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>A MORE CONNECTED WORLD</span></div></div>
+  <div class="f2"><div class="wrap"><span>© 2026 Votrite Mobil · shopvotritemobil.com · All Rights Reserved. Demonstration website only. Separate from VotRite voting.</span><span class="acw"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>A MORE CONNECTED WORLD</span></div></div>
 </footer>
 <div class="toast" id="toast"></div>
 
