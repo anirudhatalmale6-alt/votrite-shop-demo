@@ -147,6 +147,8 @@ th{background:#f7f9fd;color:var(--muted);font-weight:600;font-size:12px;text-tra
 footer{background:var(--navy);color:#9fb3d9;margin-top:40px;padding:34px 0;font-size:13px}
 footer .f{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer b{color:#fff}
+footer .disc{border-top:1px solid rgba(255,255,255,.12);margin-top:20px;padding-top:16px;font-size:12px;line-height:1.55;color:#8ea3c9}
+.disc-s{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
 .sep{letter-spacing:.3em;color:#cfdcf5;font-size:11px;margin-top:6px}
 .empty{padding:30px;text-align:center;color:var(--muted)}
 .view{display:none}.view.on{display:block}
@@ -284,7 +286,7 @@ footer b{color:#fff}
 <footer><div class="wrap f">
   <div><b>Votrite Mobil Shop</b><div class="sep">EMPOWERING A MORE CONNECTED WORLD</div></div>
   <div>Separate from VotRite voting · no ads on any ballot page</div>
-</div></footer>
+</div><div class="wrap disc">Disclaimer: Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div></footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -366,6 +368,7 @@ function render(){
        <div class="item">🕒 <span>Open today 9:00 – 20:00</span></div>
        <button class="btn btn-blue" onclick="shopClick(${b.id})">Visit their shop →</button>
        <button class="btn btn-ghost" onclick="toast('Shared!')">Share</button>
+       <p class="disc-s">Offered by an independent third-party seller. Votrite Mobil does not endorse or guarantee this advertiser. Please verify all information before purchasing.</p>
      </div>
    </div><a class="back" href="#browse">← Back to businesses</a></div>`;
    $("#v-biz").classList.add("on"); }
