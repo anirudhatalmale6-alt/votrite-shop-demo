@@ -41,6 +41,8 @@ nav.top a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:2px;
 .hdr-r button,.hdr-r a{display:flex;align-items:center;gap:7px;background:none;border:0;color:#e4ecfb;font-weight:600;font-size:14px;padding:8px 10px;border-radius:9px}
 .hdr-r button:hover,.hdr-r a:hover{background:rgba(255,255,255,.07)}
 .hdr-r svg{font-size:18px}
+.hdr-r button{white-space:nowrap}
+@media (max-width:1400px){.cityb .lbl{display:none} nav.top a{padding:9px 11px}}
 .hdr-r .signup{background:var(--blue);color:#fff;padding:9px 16px;border-radius:10px}
 .hdr-r .signup:hover{background:#155ccc}
 .menu-btn{display:none!important}
@@ -268,6 +270,23 @@ section{padding:42px 0}
 .faq details[open] summary:after{content:"–"}
 .faq details p{padding:0 0 16px;color:#3d4a63}
 
+/* contact */
+.contact{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:start}
+.ch{font-family:Montserrat;font-weight:800;font-size:22px;margin-bottom:14px}
+.prices td{vertical-align:top;font-size:14px}
+.prices td:nth-child(2){color:#3d4a63}
+.pv{font-family:Montserrat;font-weight:800;font-size:18px;white-space:nowrap;color:var(--ink)}
+.pv.free{color:#16a34a}
+.pv small{font-size:12px;color:var(--muted);font-weight:600}
+.cform{display:grid;gap:12px}
+.cform label{display:grid;gap:5px;font-weight:600;font-size:13.5px}
+.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;outline:0;background:#fff;width:100%}
+.cform input:focus,.cform select:focus,.cform textarea:focus{border-color:var(--blue)}
+.two2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cinfo{display:grid;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+.cinfo div{display:flex;gap:10px;align-items:center}
+.cinfo svg{color:var(--blue);font-size:18px}
+.cinfo i{color:var(--muted)}
 /* admin */
 .admin-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
@@ -301,10 +320,21 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:60;max-width:90vw;text-align:center}
 .toast.show{opacity:1}
 
+@media (max-width:1200px){
+  .menu-btn{display:flex!important}
+  nav.top{display:none;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;padding:10px 16px 16px;box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  nav.top.open{display:flex}
+  nav.top a.on:after{display:none}
+  .hdr-r .lbl{display:none}
+  .hdr-r{margin-left:auto}
+  nav.top a{padding:11px 14px!important;font-size:15px!important}
+}
 @media (max-width:1100px){
   nav.top a{padding:9px 9px;font-size:14px}
   .hdr-r .lbl{display:none}
   .hdr{gap:12px}
+  nav.top a{padding:9px 7px!important;font-size:13.5px}
+  .logo small{display:none}
   .hero .wrap{grid-template-columns:1fr}
   .stage{min-height:480px}
   .hero:before{background:linear-gradient(180deg,#040c22 0%,rgba(4,12,34,.75) 45%,rgba(4,12,34,.3) 100%)}
@@ -315,11 +345,6 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .f1{grid-template-columns:1fr 1fr} .fdisc{grid-column:1/-1;border:0;padding:0}
 }
 @media (max-width:860px){
-  .menu-btn{display:flex!important}
-  nav.top{display:none;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;padding:10px 16px 16px;box-shadow:0 10px 20px rgba(0,0,0,.3)}
-  nav.top.open{display:flex}
-  nav.top a.on:after{display:none}
-  .hdr-r .lbl{display:none}
   .strip .wrap{grid-template-columns:1fr 1fr;gap:18px}
   .band .wrap{grid-template-columns:repeat(4,1fr)} .band .bt{grid-column:1/-1} .bs:nth-child(2){border:0}
   .strip .it{border:0;padding:0}
@@ -331,6 +356,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .ahero .wrap{grid-template-columns:1fr} .aimg{display:none}
   .two{grid-template-columns:1fr} .vals{grid-template-columns:1fr 1fr}
   .discblk .wrap{flex-direction:column;gap:8px}
+  .contact{grid-template-columns:1fr}
 }
 @media (max-width:380px){
   .logo{font-size:18px} .logo small{display:none} .hdr-r button[title="Sign In"]{display:none}
@@ -369,8 +395,10 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   .vals{grid-template-columns:1fr}
   .cta .scr2{display:none}
   .f1{grid-template-columns:1fr} .flinks{justify-content:flex-start} .flinks a:first-child{padding-left:0} .soc{justify-content:flex-start}
-  table{font-size:12px} th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){display:none}
+  table{font-size:12px} .admtbl th:nth-child(3),.admtbl td:nth-child(3),.admtbl th:nth-child(4),.admtbl td:nth-child(4){display:none}
   .page-h h1{font-size:28px}
+  .two2{grid-template-columns:1fr}
+  .prices th:nth-child(2),.prices td:nth-child(2){display:none}
 }
 </style>
 </head>
@@ -388,6 +416,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <a href="#advertise" data-nav="advertise">Advertise</a>
       <a href="#about" data-nav="about">About</a>
       <a href="#help" data-nav="help">Help</a>
+      <a href="#contact" data-nav="contact">Contact</a>
       <a href="#admin" data-nav="admin">Admin (demo)</a>
     </nav>
     <div class="hdr-r">
@@ -576,6 +605,39 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
   </section></div>
 </div>
 
+<!-- CONTACT -->
+<div class="view" id="v-contact">
+  <div class="page-h"><div class="wrap"><h1>Contact &amp; Price List</h1><p>Questions about advertising on Votrite Mobil Shop? Send us a message and we will get back to you.</p></div></div>
+  <div class="wrap"><section><div class="contact">
+    <div class="card">
+      <h2 class="ch">Price list</h2>
+      <div style="overflow-x:auto"><table class="prices"><thead><tr><th>Advertising option</th><th>What you get</th><th>Price</th></tr></thead><tbody>
+        <tr><td><b>First Ad — Launch Promotion</b></td><td>Business page with logo, photos, products, location and shop link; shown in category &amp; city search</td><td class="pv free">FREE</td></tr>
+        <tr><td><b>Each Additional Ad</b></td><td>Another product, service, deal or location; runs while you keep it on; pause or stop any time</td><td class="pv">$ ___ <small>/ ad</small></td></tr>
+        <tr><td><b>Featured Placement</b></td><td>Top spot on the homepage, gold Featured badge, priority in search, Latest Deals</td><td class="pv">$ ___ <small>extra</small></td></tr>
+      </tbody></table></div>
+      <p class="note">Prices to be confirmed by Votrite Mobil before launch.</p>
+    </div>
+    <div class="card">
+      <h2 class="ch">Send us a message</h2>
+      <form class="cform" onsubmit="event.preventDefault();this.reset();toast('Demo: in the live site this message is sent to Votrite Mobil')">
+        <label>Your name<input required placeholder="Full name"></label>
+        <label>Business name<input placeholder="Business name"></label>
+        <div class="two2"><label>Email<input type="email" required placeholder="you@business.com"></label>
+        <label>Phone<input type="tel" placeholder="Phone number"></label></div>
+        <label>I'm interested in<select><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements</option><option>Featured Placement</option><option>Something else</option></select></label>
+        <label>Message<textarea rows="4" placeholder="Tell us about your business"></textarea></label>
+        <button class="btn btn-gold">Send Message <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <div class="cinfo">
+        <div><svg class="i" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-12a7 7 0 0 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Address: <i>to be added</i></span></div>
+        <div><svg class="i" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span>Phone: <i>to be added</i></span></div>
+        <div><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Hours: <i>to be added</i></span></div>
+      </div>
+    </div>
+  </div></section></div>
+</div>
+
 <!-- ADMIN -->
 <div class="view" id="v-admin"><div class="wrap">
   <section>
@@ -586,7 +648,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
       <div class="kpi"><span>Views this month</span><b id="k-views">0</b></div>
       <div class="kpi"><span>Clicks to shops</span><b id="k-clicks">0</b></div>
     </div>
-    <div style="overflow-x:auto"><table><thead><tr><th>Business</th><th>Status</th><th>Views</th><th>Clicks</th><th>Actions</th></tr></thead><tbody id="adm"></tbody></table></div>
+    <div style="overflow-x:auto"><table class="admtbl"><thead><tr><th>Business</th><th>Status</th><th>Views</th><th>Clicks</th><th>Actions</th></tr></thead><tbody id="adm"></tbody></table></div>
     <p class="note">In the real version only Votrite Mobil staff can see this page, with its own login.</p>
   </section>
 </div></div>
@@ -599,7 +661,7 @@ footer{background:var(--navy);color:#a8badc;font-size:13px}
 <footer>
   <div class="wrap f1" style="padding-left:20px;padding-right:20px">
     <div><a class="logo" href="#home" style="font-size:23px"><svg viewBox="0 0 40 36"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span></a><div class="tg">MOBILE COMMERCE FOR A BETTER TOMORROW</div></div>
-    <div><div class="flinks"><a href="#home">Home</a><a href="#browse">Businesses</a><a href="#deals">Deals</a><a href="#advertise">Advertise</a><a href="#about">About</a><a href="#help">Help</a><a href="#help">Contact</a></div>
+    <div><div class="flinks"><a href="#home">Home</a><a href="#browse">Businesses</a><a href="#deals">Deals</a><a href="#advertise">Advertise</a><a href="#about">About</a><a href="#help">Help</a><a href="#contact">Contact</a></div>
       <div class="soc"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><svg class="i" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7h.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></div></div>
     <div class="fdisc"><b>Disclaimer:</b> Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div>
   </div>
@@ -685,7 +747,7 @@ function render(){
  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
  document.querySelectorAll("nav.top a").forEach(a=>a.classList.toggle("on",a.dataset.nav===h.split("-")[0]));
  document.querySelector("nav.top").classList.remove("open");
- $("#discblk").style.display=(h==="advertise"||h==="about"||h==="help")?"":"none";
+ $("#discblk").style.display=(h==="advertise"||h==="about"||h==="help"||h==="contact")?"":"none";
  window.scrollTo(0,0);
  if(h==="home"){ $("#v-home").classList.add("on"); panels(); stage();
    $("#featured").innerHTML=live().filter(b=>b.featured).map(card).join("");
@@ -700,7 +762,7 @@ function render(){
    $("#browse-title").textContent=[filt.cat?catName(filt.cat):"All businesses",filt.city?"in "+filt.city:"",filt.q?`matching “${filt.q}”`:""].filter(Boolean).join(" ");
    $("#all").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No businesses match yet.</div>'; }
  else if(h==="deals"){ $("#v-deals").classList.add("on"); $("#deals-all").innerHTML=live().filter(b=>b.deal).map(dealCard).join(""); }
- else if(["advertise","about","help"].includes(h)){ $("#v-"+h).classList.add("on"); }
+ else if(["advertise","about","help","contact"].includes(h)){ $("#v-"+h).classList.add("on"); }
  else if(h==="admin"){ $("#v-admin").classList.add("on"); admin(); }
  else if(h.startsWith("biz-")){ const b=BIZ.find(x=>x.id==h.slice(4)); if(!b){location.hash="home";return;}
    b.views++;
