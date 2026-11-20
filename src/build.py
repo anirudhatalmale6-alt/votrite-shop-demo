@@ -38,6 +38,7 @@ P = {  # 24x24 stroke icons (lucide style)
     'plane': '<path d="M2 13l8-2 4-8h2l-2 8 6 1 2-2h1l-1 4 1 4h-1l-2-2-6 1 2 8h-2l-4-8-8-2z"/>',
     'wrench': '<path d="M14.5 6.5a4.5 4.5 0 0 0 5.8 5.8l-8.8 8.8a2.4 2.4 0 0 1-3.4-3.4l8.8-8.8A4.5 4.5 0 0 0 14.5 6.5zM14 3.5l3 3"/>',
     'grid': '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+    'mail': '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
     'clock': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
     'facebook': '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/>',
     'instagram': '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',

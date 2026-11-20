@@ -281,6 +281,10 @@ section{padding:42px 0}
 .ctitle{background:linear-gradient(100deg,#061331,#123a83);color:#fff;border-radius:20px;padding:30px 28px;margin-bottom:22px}
 .ctitle h1{font-family:Montserrat;font-weight:800;font-size:32px}
 .ctitle p{color:#cfdcf5;font-size:16px;margin-top:8px}
+.cmail{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#fff;font-weight:700;font-size:16px;background:rgba(255,255,255,.12);padding:9px 14px;border-radius:10px}
+.cmail:hover{background:rgba(255,255,255,.2)}
+.cmail svg,.fmail svg{font-size:18px}
+.fmail{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:#123a83;font-weight:700;font-size:14px}
 .ch{font-family:Montserrat;font-weight:800;font-size:22px;margin-bottom:14px}
 .prices td{vertical-align:top;font-size:14px}
 .prices td:nth-child(2){color:#3d4a63}
@@ -606,7 +610,8 @@ footer .logo{color:#123a83}
 <!-- CONTACT -->
 <div class="view" id="v-contact">
   <div class="wrap"><section><div class="contact">
-    <div><div class="ctitle"><h1>Contact &amp; Price List</h1><p>Questions about advertising on Votrite Mobil Shop?<br>Send us a message and we will get back to you.</p></div>
+    <div><div class="ctitle"><h1>Contact &amp; Price List</h1><p>Questions about advertising on Votrite Mobil Shop?<br>Send us a message and we will get back to you.</p>
+      <a class="cmail" href="mailto:info@votrite.com">@@mail@@info@votrite.com</a></div>
     <div class="card">
       <h2 class="ch">Price list</h2>
       <div style="overflow-x:auto"><table class="prices"><thead><tr><th>Advertising option</th><th>What you get</th><th>Price</th></tr></thead><tbody>
@@ -617,13 +622,13 @@ footer .logo{color:#123a83}
     </div></div>
     <div class="card">
       <h2 class="ch">Send us a message</h2>
-      <form class="cform" onsubmit="event.preventDefault();this.reset();toast('Demo: in the live site this message is sent to Votrite Mobil')">
-        <label>Your name<input required placeholder="Full name"></label>
-        <label>Business name<input placeholder="Business name"></label>
-        <div class="two2"><label>Email<input type="email" required placeholder="you@business.com"></label>
-        <label>Phone<input type="tel" placeholder="Phone number"></label></div>
-        <label>I'm interested in<select><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
-        <label>Message<textarea rows="4" placeholder="Tell us about your business"></textarea></label>
+      <form class="cform" onsubmit="event.preventDefault();sendContact(this)">
+        <label>Your name<input name="name" required placeholder="Full name"></label>
+        <label>Business name<input name="business" placeholder="Business name"></label>
+        <div class="two2"><label>Email<input name="email" type="email" required placeholder="you@business.com"></label>
+        <label>Phone<input name="phone" type="tel" placeholder="Phone number"></label></div>
+        <label>I'm interested in<select name="interest"><option>First Ad — Launch Promotion (free)</option><option>Additional Advertisements ($0.50 per day)</option><option>Featured Placement ($1.00 per day)</option><option>Something else</option></select></label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your business"></textarea></label>
         <button class="btn btn-gold">Send Message @@arrow@@</button>
       </form>
     </div>
@@ -647,7 +652,7 @@ footer .logo{color:#123a83}
 
 <footer>
   <div class="wrap f1" style="padding-left:20px;padding-right:20px">
-    <div><a class="logo" href="#home" style="font-size:23px"><svg viewBox="0 0 40 36"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span></a><div class="tg">MOBILE COMMERCE FOR A BETTER TOMORROW</div></div>
+    <div><a class="logo" href="#home" style="font-size:23px"><svg viewBox="0 0 40 36"><path d="M1 3h9l9 20L31 1h8L22 35h-6z" fill="url(#lgV)"/></svg>otrite<span class="m">Mobil</span></a><div class="tg">MOBILE COMMERCE FOR A BETTER TOMORROW</div><a class="fmail" href="mailto:info@votrite.com">@@mail@@info@votrite.com</a></div>
     <div><div class="flinks"><a href="#home">Home</a><a href="#browse">Businesses</a><a href="#deals">Deals</a><a href="#advertise">Advertise</a><a href="#about">About</a><a href="#help">Help</a><a href="#contact">Contact</a><a href="#admin">Admin (demo)</a></div>
       <div class="soc">@@facebook@@@@instagram@@@@xlogo@@@@youtube@@@@linkedin@@</div></div>
     <div class="fdisc"><b>Disclaimer:</b> Products and services advertised on Votrite Mobil are offered by independent third-party sellers. Votrite Mobil does not endorse, guarantee, or assume responsibility for advertiser claims, product quality, pricing, availability, or transactions between users and sellers. Please verify all information before purchasing.</div>
@@ -777,6 +782,14 @@ function render(){
  else location.hash="home";
 }
 function shopClick(id){const b=BIZ.find(x=>x.id==id); b.clicks++; toast("Opens "+b.name+"'s own website (click counted)");}
+// the message opens in the visitor's own email program, addressed to Votrite Mobil
+function sendContact(f){
+ const v=n=>(f.elements[n].value||"").trim();
+ const body=["Name: "+v("name"),"Business: "+v("business"),"Email: "+v("email"),"Phone: "+v("phone"),"Interested in: "+v("interest"),"","Message:",v("message")].join("\n");
+ const url="mailto:info@votrite.com?subject="+encodeURIComponent("Votrite Mobil Shop inquiry"+(v("business")?" - "+v("business"):""))+"&body="+encodeURIComponent(body);
+ window._lastMail=url; window.location.href=url;
+ toast("Your email program is opening with your message to Votrite Mobil. Just press Send.");
+}
 function go(f){filt=f; if(location.hash==="#browse") render(); else location.hash="browse";}
 function doSearch(){go({q:$("#q").value.trim()||undefined, city:$("#city").value||undefined});}
 function admin(){
